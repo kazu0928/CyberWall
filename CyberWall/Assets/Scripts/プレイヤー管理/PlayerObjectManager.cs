@@ -30,10 +30,6 @@ public class PlayerObjectManager
     /// </summary>
     private PlayerObjectManager()
     {
-        if (PlayerManager.Instance.PlayerObject == null)
-        {
-            Debug.Log("ぬるです");
-        }
         playerObject = PlayerManager.Instance.PlayerObject;
         tiltObject = playerObject.transform.Find("Tilt").gameObject;
         rigidbody = playerObject.GetComponent<Rigidbody>();
@@ -41,7 +37,7 @@ public class PlayerObjectManager
     //getter
     public GameObject PlayerObject
     {
-        get { Debug.Log(playerObject.name); return playerObject; }
+        get { return playerObject; }
     }
     public GameObject TiltObject
     {
