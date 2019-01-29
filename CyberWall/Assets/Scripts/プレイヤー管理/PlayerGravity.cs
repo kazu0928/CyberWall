@@ -54,7 +54,7 @@ public class PlayerGravity
     public bool OnGround(float radGround, float rayRangeGround, LayerMask hitLayerGround)
     {
         //スフィアキャストを飛ばして判定（プレイヤーレイヤーには当たらない）
-        if (Physics.SphereCast(gameObject.transform.position + gameObject.transform.up * 3, radGround, -gameObject.transform.up, out hitGround, rayRangeGround, ~(1 << hitLayerGround)))
+        if (Physics.SphereCast(gameObject.transform.position + gameObject.transform.up * 3, radGround, -gameObject.transform.up, out hitGround, rayRangeGround, ~(hitLayerGround)))
         {
             //接地判定
             isGround = true;

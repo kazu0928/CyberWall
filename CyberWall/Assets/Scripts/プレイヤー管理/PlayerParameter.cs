@@ -14,6 +14,8 @@ public class PlayerParameter : ScriptableObject
     [SerializeField]
     private float upSpeed;              //上昇速度
     [SerializeField]
+    private float jumpPower;
+    [SerializeField]
     private float maxSpeed;             //最高速度
     [SerializeField]  
     private float tiltSpeed;            //傾き速度
@@ -23,7 +25,7 @@ public class PlayerParameter : ScriptableObject
     [SerializeField]
     private float rayRangeGround;       //接地判定のレイの長さ
     [SerializeField]
-    private int hitLayerGround;         //当たる地面レイヤー
+    private LayerMask hitLayerGround;         //当たる地面レイヤー
     [SerializeField]
     private float radGround = 0.7f;     //半径
     [SerializeField]
@@ -57,6 +59,10 @@ public class PlayerParameter : ScriptableObject
     {
         get { return maxSpeed; }
     }
+    public float JumpPower
+    {
+        get { return jumpPower; }
+    }
     public float TiltSpeed
     {
         get { return tiltSpeed; }
@@ -65,6 +71,7 @@ public class PlayerParameter : ScriptableObject
     {
         get { return tiltReturnSpeed; }
     }
+
     public float RayRangeGround
     {
         get { return rayRangeGround; }

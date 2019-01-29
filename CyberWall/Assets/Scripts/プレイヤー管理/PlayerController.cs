@@ -72,4 +72,29 @@ public class PlayerController
             playerAnimator.StopJump();
         }
     }
+    //ジャンプ処理
+    public void JumpRb()
+    {
+        //TODO:
+        if (playerGravity.isGround)
+        {
+            if (playerInput.InputJump())
+            {
+                playerMover.JumpRb(parameter.JumpPower);
+                playerGravity.isGround = false;
+                playerAnimator.PlayJump();
+            }
+        }
+    }
+    //まとめて使う用
+    public void Move()
+    {
+        MoveLRInput();
+        GravityRotation();
+        SpeedUpTime();
+        MoveStraight();
+        MoveLRRb();
+        GravityRb();
+        JumpRb();
+    }
 }

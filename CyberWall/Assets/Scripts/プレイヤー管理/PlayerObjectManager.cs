@@ -15,6 +15,8 @@ public class PlayerObjectManager
     private GameObject playerObject;
     //傾きオブジェクト
     private GameObject tiltObject;
+    //プレイヤーモデル
+    private GameObject playerModel;
     //リジッドボディ
     private Rigidbody rigidbody;
 
@@ -32,6 +34,7 @@ public class PlayerObjectManager
     {
         playerObject = PlayerManager.Instance.PlayerObject;
         tiltObject = playerObject.transform.Find("Tilt").gameObject;
+        playerModel = tiltObject.transform.Find("PlayerModel").gameObject;
         rigidbody = playerObject.GetComponent<Rigidbody>();
     }
     //getter
@@ -42,6 +45,10 @@ public class PlayerObjectManager
     public GameObject TiltObject
     {
         get { return tiltObject; }
+    }
+    public GameObject PlayerModel
+    {
+        get { return playerModel; }
     }
     public Rigidbody rb
     {

@@ -8,21 +8,21 @@ public class PlayerAnimator
     private Animator animator;
     public PlayerAnimator()
     {
-        gameObject = PlayerObjectManager.Instance.PlayerObject;
+        gameObject = PlayerObjectManager.Instance.PlayerModel;
         animator = gameObject.GetComponent<Animator>();
     }
     public void PlayJump()
     {
-        animator.SetTrigger("ジャンプ");
-        animator.SetBool("通常モーション", false);
+        animator.SetTrigger("Jump");
+        animator.SetBool("RunBoad", false);
     }
     public void PlayRunBoad()
     {
-        animator.SetBool("通常モーション", true);
+        animator.SetBool("RunBoad", true);
     }
     public void StopJump()
     {
         animator.Play("通常モーション");
-        animator.SetBool("通常モーション", true);
+        animator.SetBool("RunBoad", true);
     }
 }

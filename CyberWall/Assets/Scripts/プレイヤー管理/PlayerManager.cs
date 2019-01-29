@@ -31,6 +31,17 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     private void Update()
     {
-        controller.MoveLRInput();
+        controller.Move();
+    }
+    //デバッグ用
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 2);
+        if (playerObj == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(playerObj.transform.position + playerObj.transform.up * 3 + -playerObj.transform.up * parameter.RayRangeGround, parameter.RadGround);
     }
 }
