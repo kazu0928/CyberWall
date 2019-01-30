@@ -39,7 +39,7 @@ public class PlayerMover
     /// </summary>
     public void JumpRb(float jumpPower)
     {
-        Vector3 jumpSpeed = PlayerObjectManager.Instance.PlayerObject.transform.up * jumpPower * Time.deltaTime * 60;
+        Vector3 jumpSpeed = PlayerObjectManager.Instance.PlayerObject.transform.up * jumpPower;
         PlayerObjectManager.Instance.rb.AddForce(jumpSpeed, ForceMode.Impulse);
     }
     /// <summary>

@@ -74,16 +74,17 @@ public class PlayerGravity
     public void GravityChange(GravityMode gravityMode)
     {
         mode = gravityMode;
+        Debug.Log(mode);
         switch (mode)
         {
             case GravityMode.Left:
-                gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, Vector3.forward), Vector3.forward), 0.1f);
+                gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, -Vector3.left), -Vector3.left), 0.1f);
                 break;
             case GravityMode.Up:
                 gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, -Vector3.up), -Vector3.up), 0.1f);
                 break;
             case GravityMode.Right:
-                gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, -Vector3.forward), -Vector3.forward), 0.1f);
+                gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, -Vector3.right), -Vector3.right), 0.1f);
                 break;
             case GravityMode.Down:
                 gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, Vector3.up), Vector3.up), 0.1f);

@@ -33,7 +33,14 @@ public class PlayerController
     //左右移動(RB)
     public void MoveLRRb()
     {
-        playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed);
+        if (playerGravity.isGround)
+        {
+            playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed);
+        }
+        else
+        {
+            playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftAirSpeed);
+        }
     }
     //前移動(RB)
     public void MoveStraight()
@@ -51,7 +58,7 @@ public class PlayerController
             return;
         }
         playerGravity.GravityChange(gravityMode);
-        playerMover.JumpRb(60);
+        playerMover.JumpRb(parameter.JumpPower);
         playerGravity.isGround = false;
         playerAnimator.PlayJump();
     }

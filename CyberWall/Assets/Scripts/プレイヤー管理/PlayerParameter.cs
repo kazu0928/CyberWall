@@ -12,6 +12,8 @@ public class PlayerParameter : ScriptableObject
     [SerializeField]
     private float rightLeftSpeed;       //左右移動速度
     [SerializeField]
+    private float rightLeftAirSpeed;    //左右移動速度空中
+    [SerializeField]
     private float upSpeed;              //上昇速度
     [SerializeField]
     private float jumpPower;
@@ -50,6 +52,10 @@ public class PlayerParameter : ScriptableObject
     public float RightLeftSpeed
     {
         get { return rightLeftSpeed; }
+    }
+    public float RightLeftAirSpeed
+    {
+        get { return rightLeftAirSpeed; }
     }
     public float UpSpeed
     {
