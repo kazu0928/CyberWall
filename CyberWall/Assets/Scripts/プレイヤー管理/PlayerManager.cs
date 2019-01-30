@@ -19,7 +19,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
     //初期化
     void Start()
     {
-        playerObj = Instantiate(parameter.PlayerObj, transform.position, transform.rotation);
+        playerObj = Instantiate(parameter.PlayerObj, transform.position, transform.rotation).gameObject;
         if(parameter.SpeedEffectObject != null)
         {
             speedEffectObject = Instantiate(parameter.SpeedEffectObject, new Vector3(10, 10, -50), parameter.SpeedEffectObject.transform.rotation);
@@ -36,8 +36,8 @@ public class PlayerManager : SingletonMono<PlayerManager>
     //デバッグ用
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 2);
+        Gizmos.color = new Color(230,155,144,0.3f);
+        Gizmos.DrawSphere(transform.position, 1);
         if (playerObj == null)
         {
             return;

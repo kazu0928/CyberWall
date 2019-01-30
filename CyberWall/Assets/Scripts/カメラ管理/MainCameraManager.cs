@@ -81,7 +81,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         nowCameraMode = mainCameraParameter.CameraMode;
 
         //プレイヤーの取得
-        if (PlayerObjectManager.Instance.PlayerObject == null || lookPosition != null)
+        if (PlayerManager.Instance.PlayerObject == null || lookPosition != null)
         {
             return;
         }
