@@ -116,7 +116,10 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         managerPos.localEulerAngles = lookAngles;
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
-        rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+        if (mainCameraParameter.RotationFlag)
+        {
+            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+        }
         //壁めり込み判定
         RaycastHit hit;
         if (Physics.Raycast(managerPos.position, childPos.position - managerPos.position, out hit, (childPos.position - managerPos.position).magnitude, 1 << LayerMask.NameToLayer("Wall")))
@@ -173,7 +176,10 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.1f);
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
-        rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+        if (mainCameraParameter.RotationFlag)
+        {
+            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+        }
         //壁めり込み判定
         //RaycastHit hit;
         //if (Physics.Raycast(managerPos.position, childPos.position - managerPos.position, out hit, (childPos.position - managerPos.position).magnitude, 1 << LayerMask.NameToLayer("Wall")))

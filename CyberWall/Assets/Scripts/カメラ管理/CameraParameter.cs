@@ -36,6 +36,8 @@ public class CameraParameter : ScriptableObject
     private bool leapFlag;
     [SerializeField]
     private float yPoint;
+    [SerializeField]
+    private bool rotationFlag;
     public float YPoint
     {
         get { return yPoint; }
@@ -79,5 +81,9 @@ public class CameraParameter : ScriptableObject
     public bool LeapFlag
     {
         get { return leapFlag; }
+    }
+    public bool RotationFlag
+    {
+        get { return rotationFlag; }
     }
 }

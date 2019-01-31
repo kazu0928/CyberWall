@@ -21,7 +21,11 @@ public class PlayerInput
     //キーが押されれば、正負を返す
     public bool InputJump()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
+        {
+            return true;
+        }
+        return false;
     }
     //キーが押されれば、その次の左右上下を返す
     public GravityMode InputGravityChange(GravityMode mode)

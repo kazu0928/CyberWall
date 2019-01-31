@@ -42,6 +42,17 @@ public class PlayerController
             playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftAirSpeed);
         }
     }
+    public void MoveLRRbTube()
+    {
+        if (playerGravity.isGround)
+        {
+            playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftSpeed, playerGravity.nomalVector);
+        }
+        else
+        {
+            playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftAirSpeed, playerGravity.nomalVector);
+        }
+    }
     //前移動(RB)
     public void MoveStraight()
     {
@@ -52,7 +63,7 @@ public class PlayerController
     {
         GravityMode gravityMode = playerInput.InputGravityChange(playerGravity.mode);
         //入力されてなければそのまま
-        if (gravityMode == playerGravity.mode)
+        if (gravityMode == playerGravity.mode||!(playerGravity.isGround))
         {
             playerGravity.GravityChange(playerGravity.mode);
             return;
@@ -61,6 +72,10 @@ public class PlayerController
         playerMover.JumpRb(parameter.JumpPower);
         playerGravity.isGround = false;
         playerAnimator.PlayJump();
+    }
+    public void GravityRotationTube()
+    {
+        playerGravity.GravityChangeTube();
     }
     //時間でスピードアップ
     public void SpeedUpTime()
@@ -103,5 +118,20 @@ public class PlayerController
         MoveLRRb();
         GravityRb();
         JumpRb();
+    }
+    public void MoveTube()
+    {
+        MoveLRInput();
+        GravityRotationTube();
+        SpeedUpTime();
+        MoveStraight();
+        MoveLRRbTube();
+        GravityRb();
+        JumpRb();
+    }
+
+    public void PlusSpeedChange(float speed)
+    {
+        playerMover.PlusSpeedChange(speed);
     }
 }

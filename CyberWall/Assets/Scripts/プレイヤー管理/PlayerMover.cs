@@ -34,6 +34,11 @@ public class PlayerMover
         Rigidbody rb = PlayerObjectManager.Instance.rb;
         rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.right * inputX * Time.deltaTime * 60 * RightLeftSpeed);
     }
+    public void MoveControlRbTube(float inputX, float RightLeftSpeed, Vector3 nomalVector)
+    {
+        Rigidbody rb = PlayerObjectManager.Instance.rb;
+        rb.AddForce(Vector3.ProjectOnPlane(PlayerObjectManager.Instance.PlayerObject.transform.right, nomalVector) * inputX * Time.deltaTime * 60 * RightLeftSpeed);
+    }
     /// <summary>
     /// ジャンプ
     /// </summary>
@@ -120,4 +125,18 @@ public class PlayerMover
                 break;
         }
     }
+    //ここから他クラスからの呼び出し
+    ///////////////////////////////////////////////////////////////////
+    //速度を追加する（プラマイ）
+    public void PlusSpeedChange(float speed)
+    {
+        acceleSpeed += speed;
+        PlayerObjectManager.Instance.rb.velocity = Vector3.zero;
+        if (acceleSpeed < 10)
+        {
+            acceleSpeed = 10;
+        }
+        PlayerObjectManager.Instance.rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.forward * acceleSpeed, ForceMode.Impulse);
+    }
+    
 }

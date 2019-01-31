@@ -15,7 +15,7 @@ public class PlayerGravity
     public float time;
 
     //レイキャスト用
-    private Vector3 nomalVector;    //地面の法線ベクトル
+    public Vector3 nomalVector;    //地面の法線ベクトル
     private RaycastHit hitGround;   //スフィアキャストのヒット情報
 
     /// <summary>
@@ -31,7 +31,7 @@ public class PlayerGravity
     /// <summary>
     /// 重力
     /// </summary>
-    public void GravityRb(float startGravitySpeed, float gravitySpeed)
+    public void GravityRb(float startGravitySpeed, float gravitySpeed, StageMode stageMode = StageMode.Nomal)
     {
         Rigidbody rb = PlayerObjectManager.Instance.rb;
         if (!isGround)
@@ -74,7 +74,6 @@ public class PlayerGravity
     public void GravityChange(GravityMode gravityMode)
     {
         mode = gravityMode;
-        Debug.Log(mode);
         switch (mode)
         {
             case GravityMode.Left:
@@ -90,5 +89,12 @@ public class PlayerGravity
                 gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, Vector3.up), Vector3.up), 0.1f);
                 break;
         }
+    }
+    /// <summary>
+    /// チューブ状での角度変更
+    /// </summary>
+    public void GravityChangeTube()
+    {
+       gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(gameObject.transform.forward, hitGround.normal).normalized, hitGround.normal), 0.2f);
     }
 }
