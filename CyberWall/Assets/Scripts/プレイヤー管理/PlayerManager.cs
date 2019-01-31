@@ -46,6 +46,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
         {
             controller.Move();
         }
+        else if(nowStageMode == StageMode.Fall)
+        {
+            controller.MoveFall();
+        }
     }
     //デバッグ用
     public void OnDrawGizmos()
@@ -72,6 +76,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
     public void ChangeStageMode(StageMode mode)
     {
         nowStageMode = mode;
+    }
+    public void ChangeGravityModeNomal(GravityMode gravityMode)
+    {
+        controller.ChangeGravityModeNomal(gravityMode);
     }
     IEnumerator damage()
     {

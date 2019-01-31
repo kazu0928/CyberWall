@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab555a47d093441a6385e90936d353, type: 3}
   m_Name: "\u843D\u3061\u3066\u308B\u6642\u306E\u30AB\u30E1\u30E9"
   m_EditorClassIdentifier: 
-  distance: 9.45
+  distance: 17.27
   lookAngles: {x: 80.64, y: 0}
   offsetPos: {x: 0, y: 0, z: 0}
   plusTargetPos: {x: 0, y: 0, z: 0}
@@ -19,7 +19,7 @@ MonoBehaviour:
   maxRotation: 90
   cameraSpeed: 850
   cameraMode: 1
-  cameraFixed: 0200000001000000
-  leapFlag: 1
+  cameraFixed: 020000000100000000000000
+  leapFlag: 0
   yPoint: 0
   rotationFlag: 1

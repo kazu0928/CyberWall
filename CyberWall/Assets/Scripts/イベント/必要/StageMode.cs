@@ -6,4 +6,5 @@ public enum StageMode
 {
     Nomal,
     Tube,
+    Fall,
 }

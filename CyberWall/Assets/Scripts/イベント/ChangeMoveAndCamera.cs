@@ -17,6 +17,7 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
     {
         MainCameraManager.Instance.InitCameraParameterChange(changeCameraParameter);
         PlayerManager.Instance.ChangeStageMode(changeStage);
+        PlayerManager.Instance.ChangeGravityModeNomal(GravityMode.Down);
     }
 
     public void OnPlaySound()

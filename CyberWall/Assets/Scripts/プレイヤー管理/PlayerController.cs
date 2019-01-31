@@ -25,12 +25,24 @@ public class PlayerController
             speedEffectObject = speedEffectObj;
         }
     }
-    //左右移動入力
+    /// <summary>
+    /// 左右移動入力
+    /// </summary>
     public void MoveLRInput()
     {
         playerMover.PlayerTilt(parameter.TiltSpeed, parameter.TiltReturnSpeed, playerInput.InputHorizontal());
     }
-    //左右移動(RB)
+    //両方入力対応
+    public void MoveInput()
+    {
+        playerInput.InputVertical();
+        playerInput.InputHorizontal();
+        playerMover.PlayerTilt(parameter.TiltSpeed, parameter.TiltReturnSpeed, playerInput.inputX,playerInput.inputY);
+
+    }
+    /// <summary>
+    /// 左右移動(RB)
+    /// </summary>
     public void MoveLRRb()
     {
         if (playerGravity.isGround)
@@ -42,6 +54,7 @@ public class PlayerController
             playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftAirSpeed);
         }
     }
+    //チューブ版
     public void MoveLRRbTube()
     {
         if (playerGravity.isGround)
@@ -53,10 +66,21 @@ public class PlayerController
             playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftAirSpeed, playerGravity.nomalVector);
         }
     }
-    //前移動(RB)
+    public void MoveLRFB()
+    {
+        playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed);
+        playerMover.MoveControlRbFB(playerInput.inputY, parameter.RightLeftSpeed);
+    }
+    /// <summary>
+    /// 前移動(RB)
+    /// </summary>
     public void MoveStraight()
     {
         playerMover.MoveStraightRb(playerMover.acceleSpeed);
+    }
+    public void MoveDown()
+    {
+        playerMover.MoveDown(playerMover.acceleSpeed);
     }
     //重力変更
     public void GravityRotation()
@@ -129,9 +153,21 @@ public class PlayerController
         MoveLRRbTube();
         GravityRb();
     }
+    public void MoveFall()
+    {
+        MoveInput();
+        SpeedUpTime();
+        MoveDown();
+        MoveLRFB();
+    }
 
     public void PlusSpeedChange(float speed)
     {
         playerMover.PlusSpeedChange(speed);
     }
+    public void ChangeGravityModeNomal(GravityMode gravityMode)
+    {
+        playerGravity.mode = gravityMode;
+    }
+
 }

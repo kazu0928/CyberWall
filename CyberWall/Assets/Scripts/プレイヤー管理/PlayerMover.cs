@@ -26,6 +26,11 @@ public class PlayerMover
         Rigidbody rb = PlayerObjectManager.Instance.rb;
         rb.AddForce((PlayerObjectManager.Instance.PlayerObject.transform.forward * acceleSpeed - rb.velocity) * Time.deltaTime * 60);
     }
+    public void MoveDown(float accelSpeed)
+    {
+        Rigidbody rb = PlayerObjectManager.Instance.rb;
+        rb.AddForce((Vector3.down * acceleSpeed - rb.velocity) * Time.deltaTime * 60);
+    }
     /// <summary>
     /// 左右移動
     /// </summary>
@@ -33,6 +38,12 @@ public class PlayerMover
     {
         Rigidbody rb = PlayerObjectManager.Instance.rb;
         rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.right * inputX * Time.deltaTime * 60 * RightLeftSpeed);
+    }
+    // 前後移動
+    public void MoveControlRbFB(float inputY, float RightLeftSpeed)
+    {
+        Rigidbody rb = PlayerObjectManager.Instance.rb;
+        rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.forward * inputY * Time.deltaTime * 60 * RightLeftSpeed);
     }
     public void MoveControlRbTube(float inputX, float RightLeftSpeed, Vector3 nomalVector)
     {
@@ -51,14 +62,15 @@ public class PlayerMover
     /// 入力時にプレイヤーに角度をつける(傾ける)
     /// </summary>
     /// <param name="inputX">入力値</param>
-    public void PlayerTilt(float tiltSpeed, float tiltReturnSpeed, float inputX)
+    public void PlayerTilt(float tiltSpeed, float tiltReturnSpeed, float inputX, float inputY = 0)
     {
         //角度付け用のオブジェクトを取得
         Transform transform = PlayerObjectManager.Instance.TiltObject.transform;
+        float x = transform.localRotation.eulerAngles.x;
         //現在の傾き角度取得
         float z = transform.localRotation.eulerAngles.z;
         //プレイヤーの傾き処理
-        transform.localRotation = Quaternion.Euler(0, 0, z - inputX * Time.deltaTime * 60 * tiltSpeed);
+        transform.localRotation = Quaternion.Euler(x, 0, z - inputX * Time.deltaTime * 60 * tiltSpeed);
         //傾きすぎの防止処理
         z = transform.localRotation.eulerAngles.z;
         if (z > 180)
@@ -67,14 +79,37 @@ public class PlayerMover
         }
         if (z > 20)
         {
-            transform.localRotation = Quaternion.Euler(0, 0, 20);
+            transform.localRotation = Quaternion.Euler(x, 0, 20);
         }
         else if (z < -20)
         {
-            transform.localRotation = Quaternion.Euler(0, 0, -20);
+            transform.localRotation = Quaternion.Euler(x, 0, -20);
         }
         //傾きを戻す処理
-        transform.localRotation = Quaternion.Euler(0, 0, Mathf.Sign(z) * (Mathf.Clamp(Mathf.Abs(z) - tiltReturnSpeed * Time.deltaTime * 60, 0, 20)));
+        transform.localRotation = Quaternion.Euler(x, 0, Mathf.Sign(z) * (Mathf.Clamp(Mathf.Abs(z) - tiltReturnSpeed * Time.deltaTime * 60, 0, 20)));
+        z = transform.localRotation.eulerAngles.z;
+
+        //現在の傾き角度取得
+        x = transform.localRotation.eulerAngles.x;
+        //プレイヤーの傾き処理
+        transform.localRotation = Quaternion.Euler(x + inputY * Time.deltaTime * 60 * tiltSpeed, 0, z);
+        //傾きすぎの防止処理
+        x = transform.localRotation.eulerAngles.x;
+        if (x > 180)
+        {
+            x -= 360;//0～180、0～-180にする
+        }
+        if (x > 20)
+        {
+            transform.localRotation = Quaternion.Euler(20, 0, z);
+        }
+        else if (x < -20)
+        {
+            transform.localRotation = Quaternion.Euler(-20, 0, z);
+        }
+        //傾きを戻す処理
+        transform.localRotation = Quaternion.Euler(Mathf.Sign(x) * (Mathf.Clamp(Mathf.Abs(x) - tiltReturnSpeed * Time.deltaTime * 60, 0, 20)), 0,z);
+
     }
     /// <summary>
     /// スピードアップ
