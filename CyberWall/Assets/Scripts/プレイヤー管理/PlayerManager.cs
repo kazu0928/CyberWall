@@ -17,6 +17,9 @@ public class PlayerManager : SingletonMono<PlayerManager>
     private GameObject speedEffectObject;
     //画面効果
     private GlitchFx fx;
+    //現在のステージが何か
+    [SerializeField]
+    private StageMode nowStageMode;
 
     //初期化
     void Start()
@@ -35,7 +38,14 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     private void Update()
     {
-        controller.MoveTube();
+        if (nowStageMode == StageMode.Tube)
+        {
+            controller.MoveTube();
+        }
+        else if(nowStageMode == StageMode.Nomal)
+        {
+            controller.Move();
+        }
     }
     //デバッグ用
     public void OnDrawGizmos()
@@ -49,13 +59,19 @@ public class PlayerManager : SingletonMono<PlayerManager>
         Gizmos.DrawWireSphere(playerObj.transform.position + playerObj.transform.up * 3 + -playerObj.transform.up * parameter.RayRangeGround, parameter.RadGround);
     }
     //--------------------
+    //スピード変更（加算式）
     public void PlusSpeedChange(float speed)
     {
         controller.PlusSpeedChange(speed);
     }
+    //ダメージエフェクト
     public void StartDamage()
     {
         StartCoroutine("damage");
+    }
+    public void ChangeStageMode(StageMode mode)
+    {
+        nowStageMode = mode;
     }
     IEnumerator damage()
     {

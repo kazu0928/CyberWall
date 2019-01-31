@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BreakRedWall : MonoBehaviour,IEventGimic
 {
-    void IEventGimic.OnPlayEffect(Collider other = null)
+    [SerializeField]
+    private float minusBreakSpeed = 90;
+    public void OnPlayEffect(Collider other = null)
     {
         if(other==null)
         {
@@ -18,12 +20,12 @@ public class BreakRedWall : MonoBehaviour,IEventGimic
         Destroy(other.gameObject);
         particle.Play();
     }
-    void IEventGimic.OnPlayEvent()
+    public void OnPlayEvent()
     {
-        PlayerManager.Instance.PlusSpeedChange(-90);
+        PlayerManager.Instance.PlusSpeedChange(-minusBreakSpeed);
         PlayerManager.Instance.StartDamage();
     }
-    void IEventGimic.OnPlaySound()
+    public void OnPlaySound()
     {
         SoundManager.Instance.PlayBreakWall();
     }

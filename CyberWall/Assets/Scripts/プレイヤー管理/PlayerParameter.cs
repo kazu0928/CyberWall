@@ -18,6 +18,8 @@ public class PlayerParameter : ScriptableObject
     [SerializeField]
     private float jumpPower;
     [SerializeField]
+    private float gravityChangeJumpPower;
+    [SerializeField]
     private float maxSpeed;             //最高速度
     [SerializeField]  
     private float tiltSpeed;            //傾き速度
@@ -68,6 +70,10 @@ public class PlayerParameter : ScriptableObject
     public float JumpPower
     {
         get { return jumpPower; }
+    }
+    public float GravityChangeJumpPower
+    {
+        get { return gravityChangeJumpPower; }
     }
     public float TiltSpeed
     {

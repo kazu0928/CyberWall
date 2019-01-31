@@ -157,7 +157,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
             //注視対象が設定されている場合追いかける
             if (lookPosition != null)
             {
-                rotationPos.position = Vector3.Lerp(new Vector3((vector + mainCameraParameter.PlusTargetPos).x, managerPos.position.y, managerPos.position.z), vector + mainCameraParameter.PlusTargetPos, mainCameraParameter.TrackingSpeed * Time.deltaTime);
+                rotationPos.position = Vector3.Lerp(new Vector3((vector + mainCameraParameter.PlusTargetPos).x, managerPos.position.y, managerPos.position.z), vector + mainCameraParameter.PlusTargetPos, mainCameraParameter.TrackingSpeed);
             }
         }
         else
@@ -173,7 +173,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
         //カメラ角度
         managerPos.localEulerAngles = lookAngles;
-        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.1f);
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.08f);
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
         if (mainCameraParameter.RotationFlag)
@@ -181,11 +181,11 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
             rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
         }
         //壁めり込み判定
-        //RaycastHit hit;
-        //if (Physics.Raycast(managerPos.position, childPos.position - managerPos.position, out hit, (childPos.position - managerPos.position).magnitude, 1 << LayerMask.NameToLayer("Wall")))
-        //{
-        //    childPos.position = hit.point;
-        //}
+        RaycastHit hit;
+        if (Physics.Raycast(managerPos.position, childPos.position - managerPos.position, out hit, (childPos.position - managerPos.position).magnitude, 1 << LayerMask.NameToLayer("Wall")))
+        {
+            childPos.position = hit.point;
+        }
     }
     /// <summary>
     /// タイトル用カメラ挙動
@@ -239,11 +239,10 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
     }
 
     //モード変更して必要なところを初期化（パラメータが変更されるとき使用）
-    public void InitChange(CameraParameter parameter)
+    public void InitCameraParameterChange(CameraParameter parameter)
     {
         mainCameraParameter = parameter;
         nowCameraMode = mainCameraParameter.CameraMode;
-        lookAngles = mainCameraParameter.LookAngles;
     }
     /// <summary>
     /// カメラの向く対象を決める

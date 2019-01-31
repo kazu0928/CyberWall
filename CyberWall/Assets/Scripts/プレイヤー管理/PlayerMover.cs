@@ -132,9 +132,9 @@ public class PlayerMover
     {
         acceleSpeed += speed;
         PlayerObjectManager.Instance.rb.velocity = Vector3.zero;
-        if (acceleSpeed < 10)
+        if (acceleSpeed < 3)
         {
-            acceleSpeed = 10;
+            acceleSpeed = 3;
         }
         PlayerObjectManager.Instance.rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.forward * acceleSpeed, ForceMode.Impulse);
     }

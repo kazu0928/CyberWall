@@ -7,7 +7,7 @@ public class PlayerOnEvent : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Gimic")
+        if (other.gameObject.layer == LayerMask.NameToLayer("Gimic"))
         {
             IEventGimic gimic = other.GetComponent<IEventGimic>();
             gimic.OnPlayEffect(other);

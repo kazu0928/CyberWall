@@ -69,7 +69,7 @@ public class PlayerController
             return;
         }
         playerGravity.GravityChange(gravityMode);
-        playerMover.JumpRb(parameter.JumpPower);
+        playerMover.JumpRb(parameter.GravityChangeJumpPower);
         playerGravity.isGround = false;
         playerAnimator.PlayJump();
     }
@@ -97,6 +97,7 @@ public class PlayerController
     //ジャンプ処理
     public void JumpRb()
     {
+
         //TODO:
         if (playerGravity.isGround)
         {
@@ -127,7 +128,6 @@ public class PlayerController
         MoveStraight();
         MoveLRRbTube();
         GravityRb();
-        JumpRb();
     }
 
     public void PlusSpeedChange(float speed)
