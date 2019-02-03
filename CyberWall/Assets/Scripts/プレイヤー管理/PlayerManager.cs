@@ -50,7 +50,6 @@ public class PlayerManager : SingletonMono<PlayerManager>
         {
             controller.MoveFall();
         }
-        Debug.Log(GameManager.Instance.cameraYPoint);
     }
     //デバッグ用
     public void OnDrawGizmos()
@@ -96,4 +95,5 @@ public class PlayerManager : SingletonMono<PlayerManager>
         yield return new WaitForSeconds(1);
         fx.enabled = false;
     }
+
 }

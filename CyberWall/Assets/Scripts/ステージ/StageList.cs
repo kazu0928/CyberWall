@@ -10,6 +10,8 @@ public class StageList : SingletonMono<StageList>
     private GameObject[] tubeStage;
     [SerializeField]
     private GameObject[] fallStage;
+    [SerializeField]
+    private GameObject energyItem;
 
     public GameObject[] BoxStage
     {
@@ -22,5 +24,9 @@ public class StageList : SingletonMono<StageList>
     public GameObject[] FallStage
     {
         get { return fallStage; }
+    }
+    public GameObject EnergyItem
+    {
+        get { return energyItem; }
     }
 }
