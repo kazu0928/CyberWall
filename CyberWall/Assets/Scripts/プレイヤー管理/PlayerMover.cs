@@ -10,6 +10,7 @@ public enum SpeedTrigger
 public class PlayerMover
 {
     public float acceleSpeed = 50;  //現在の移動速度
+    public float saveAcceleSpeed = 50;
     private float plusSpeed;
     /// <summary>
     /// コンストラクタ
@@ -173,5 +174,15 @@ public class PlayerMover
         }
         PlayerObjectManager.Instance.rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.forward * acceleSpeed, ForceMode.Impulse);
     }
-    
+    public void SaveAndSpeedChangeDirect(float speed)
+    {
+        saveAcceleSpeed = acceleSpeed;
+        acceleSpeed = speed;
+        PlayerObjectManager.Instance.rb.velocity = Vector3.zero;
+        PlayerObjectManager.Instance.rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.forward * acceleSpeed, ForceMode.Impulse);
+    }
+    public void SaveSpeedReflection()
+    {
+        acceleSpeed = saveAcceleSpeed;
+    }
 }

@@ -41,6 +41,8 @@ public class PlayerParameter : ScriptableObject
     private GameObject speedEffetObj = null;   //集中線のオブジェクト
     [SerializeField]
     private float speedOnEffectSpeed;   //集中線の出る速度
+    [SerializeField]
+    private float minusHp;
 
     //getter
     public GameObject PlayerObj
@@ -113,5 +115,9 @@ public class PlayerParameter : ScriptableObject
     public float SpeedOnEffectSpeed
     {
         get { return speedOnEffectSpeed; }
+    }
+    public float MinusHp
+    {
+        get { return minusHp; }
     }
 }

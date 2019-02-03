@@ -48,6 +48,12 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
             case CameraMode.TitleCamera:
                 TitleCameraUpdate();
                 break;
+            case CameraMode.FixedEndressTPS:
+                FixedCameraEndressUpdate();
+                break;
+            case CameraMode.FixedFallEndress:
+                FallCameraEndressUpdate();
+                break;
         }
     }
     /// <summary>
@@ -146,6 +152,119 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
                     break;
                 case CameraFixed.YFixed:
                     vector += new Vector3(0, lookPosition.position.y, 0);
+                    break;
+                case CameraFixed.ZFixed:
+                    vector += new Vector3(0, 0 + yPos, lookPosition.position.z);
+                    break;
+            }
+        }
+        if (mainCameraParameter.LeapFlag)
+        {
+            //注視対象が設定されている場合追いかける
+            if (lookPosition != null)
+            {
+                rotationPos.position = Vector3.Lerp(new Vector3((vector + mainCameraParameter.PlusTargetPos).x, managerPos.position.y, managerPos.position.z), vector + mainCameraParameter.PlusTargetPos, mainCameraParameter.TrackingSpeed);
+            }
+        }
+        else
+        {
+            //注視対象が設定されている場合追いかける
+            if (lookPosition != null)
+            {
+                rotationPos.position = vector + mainCameraParameter.PlusTargetPos;
+            }
+        }
+
+        //カメラとの距離
+        childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
+        //カメラ角度
+        managerPos.localEulerAngles = lookAngles;
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.08f);
+        //カメラの位置
+        cameraPos.localPosition = mainCameraParameter.OffsetPos;
+        if (mainCameraParameter.RotationFlag)
+        {
+            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+        }
+        //壁めり込み判定
+        RaycastHit hit;
+        if (Physics.Raycast(managerPos.position, childPos.position - managerPos.position, out hit, (childPos.position - managerPos.position).magnitude, 1 << LayerMask.NameToLayer("Wall")))
+        {
+            childPos.position = hit.point;
+        }
+    }
+    /// <summary>
+    /// 固定カメラエンドレス
+    /// </summary>
+    void FixedCameraEndressUpdate()
+    {
+        Vector3 vector = Vector3.zero;
+        float yPos = 0;
+        yPos = mainCameraParameter.YPoint + GameManager.Instance.cameraYPoint;
+        for (int i = 0; i < mainCameraParameter.CameraFixedPos.Length; i++)
+        {
+            switch (mainCameraParameter.CameraFixedPos[i])
+            {
+                case CameraFixed.XFixed:
+                    vector += new Vector3(lookPosition.position.x, 0 + yPos, 0);
+                    break;
+                case CameraFixed.YFixed:
+                    vector += new Vector3(0, lookPosition.position.y, 0);
+                    break;
+                case CameraFixed.ZFixed:
+                    vector += new Vector3(0, 0 + yPos, lookPosition.position.z);
+                    break;
+            }
+        }
+        if (mainCameraParameter.LeapFlag)
+        {
+            //注視対象が設定されている場合追いかける
+            if (lookPosition != null)
+            {
+                rotationPos.position = Vector3.Lerp(new Vector3((vector + mainCameraParameter.PlusTargetPos).x, managerPos.position.y, managerPos.position.z), vector + mainCameraParameter.PlusTargetPos, mainCameraParameter.TrackingSpeed);
+            }
+        }
+        else
+        {
+            //注視対象が設定されている場合追いかける
+            if (lookPosition != null)
+            {
+                rotationPos.position = vector + mainCameraParameter.PlusTargetPos;
+            }
+        }
+
+        //カメラとの距離
+        childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
+        //カメラ角度
+        managerPos.localEulerAngles = lookAngles;
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.08f);
+        //カメラの位置
+        cameraPos.localPosition = mainCameraParameter.OffsetPos;
+        if (mainCameraParameter.RotationFlag)
+        {
+            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+        }
+        //壁めり込み判定
+        RaycastHit hit;
+        if (Physics.Raycast(managerPos.position, childPos.position - managerPos.position, out hit, (childPos.position - managerPos.position).magnitude, 1 << LayerMask.NameToLayer("Wall")))
+        {
+            childPos.position = hit.point;
+        }
+    }
+    void FallCameraEndressUpdate()
+    {
+        Vector3 vector = Vector3.zero;
+        float yPos = 0;
+        yPos = mainCameraParameter.YPoint + GameManager.Instance.cameraYPoint;
+        for (int i = 0; i < mainCameraParameter.CameraFixedPos.Length; i++)
+        {
+            switch (mainCameraParameter.CameraFixedPos[i])
+            {
+                case CameraFixed.XFixed:
+                    vector += new Vector3(lookPosition.position.x, 0 + yPos, 0);
+                    break;
+                case CameraFixed.YFixed:
+                    vector += new Vector3(0, lookPosition.position.y, GameManager.Instance.cameraZPoint-1200);
                     break;
                 case CameraFixed.ZFixed:
                     vector += new Vector3(0, 0 + yPos, lookPosition.position.z);

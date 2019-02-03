@@ -50,6 +50,7 @@ public class PlayerManager : SingletonMono<PlayerManager>
         {
             controller.MoveFall();
         }
+        Debug.Log(GameManager.Instance.cameraYPoint);
     }
     //デバッグ用
     public void OnDrawGizmos()
@@ -76,6 +77,14 @@ public class PlayerManager : SingletonMono<PlayerManager>
     public void ChangeStageMode(StageMode mode)
     {
         nowStageMode = mode;
+    }
+    public void SaveSpeedChange(float speed)
+    {
+        controller.SaveSpeedChange(speed);
+    }
+    public void SaveSpeedReflection()
+    {
+        controller.SaveSpeedReflection();
     }
     public void ChangeGravityModeNomal(GravityMode gravityMode)
     {

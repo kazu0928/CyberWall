@@ -18,7 +18,7 @@ MonoBehaviour:
   upSpeed: 0.1
   jumpPower: 19
   gravityChangeJumpPower: 23
-  maxSpeed: 90
+  maxSpeed: 120
   tiltSpeed: 4
   tiltReturnSpeed: 2
   rayRangeGround: 3.92

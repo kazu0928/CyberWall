@@ -18,8 +18,8 @@ MonoBehaviour:
   trackingSpeed: 8
   maxRotation: 0
   cameraSpeed: 850
-  cameraMode: 1
+  cameraMode: 3
   cameraFixed: 02000000
   leapFlag: 1
-  yPoint: -100
+  yPoint: 0
   rotationFlag: 1

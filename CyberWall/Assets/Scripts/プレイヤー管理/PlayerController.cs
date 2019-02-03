@@ -101,6 +101,10 @@ public class PlayerController
     {
         playerGravity.GravityChangeTube();
     }
+    public void GravityRotationFall()
+    {
+        playerGravity.GravityChange(playerGravity.mode);
+    }
     //時間でスピードアップ
     public void SpeedUpTime()
     {
@@ -156,6 +160,7 @@ public class PlayerController
     public void MoveFall()
     {
         MoveInput();
+        GravityRotationFall();
         SpeedUpTime();
         MoveDown();
         MoveLRFB();
@@ -165,9 +170,16 @@ public class PlayerController
     {
         playerMover.PlusSpeedChange(speed);
     }
+    public void SaveSpeedChange(float speed)
+    {
+        playerMover.SaveAndSpeedChangeDirect(speed);
+    }
+    public void SaveSpeedReflection()
+    {
+        playerMover.SaveSpeedReflection();
+    }
     public void ChangeGravityModeNomal(GravityMode gravityMode)
     {
         playerGravity.mode = gravityMode;
     }
-
 }
