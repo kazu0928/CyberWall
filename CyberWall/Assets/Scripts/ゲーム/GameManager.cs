@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class GameManager : SingletonMono<GameManager>
 {
-    public float yPoint;public float zPoint;
-    public float cameraYPoint;public float cameraZPoint;
+    public float yPoint; public float zPoint;
+    public float cameraYPoint; public float cameraZPoint;
 
     private int modeLength;
     private int boxStageLength;
@@ -16,18 +16,18 @@ public class GameManager : SingletonMono<GameManager>
     private int fallStageLength;
 
     private StageMode nowStageMode;
-    private GameObject[] pastStage = { null,null,null,null };//消す
+    private GameObject[] pastStage = { null, null, null, null };//消す
     private int pastNumber;
     private GameObject startStage;
     private bool startFlag;
     private StageMode nextStageMode;
     private StageMode next2StageMode;//使ってない
 
-	void Start ()
+    void Start()
     {
         pastNumber = 0;
         startFlag = false;
-        yPoint = 0;zPoint = 0;
+        yPoint = 0; zPoint = 0;
         cameraYPoint = 0; cameraZPoint = 0;
         //mode数を取得
         modeLength = System.Enum.GetValues(typeof(StageMode)).Length;
@@ -42,7 +42,7 @@ public class GameManager : SingletonMono<GameManager>
             case 0:
                 nextStageMode = StageMode.Nomal;
                 modeN = Random.Range(0, boxStageLength);
-                pastStage[pastNumber] = Instantiate(StageList.Instance.BoxStage[modeN], new Vector3(0,-100,0), Quaternion.identity);
+                pastStage[pastNumber] = Instantiate(StageList.Instance.BoxStage[modeN], new Vector3(0, -100, 0), Quaternion.identity);
                 CreateEnergyNormal(pastStage[pastNumber]);
 
                 break;
@@ -62,7 +62,7 @@ public class GameManager : SingletonMono<GameManager>
         //次どのモードか
         int modeN = Random.Range(0, modeLength);
         //次どの配列か
-        switch(modeN)
+        switch (modeN)
         {
             case 0:
                 nextStageMode = StageMode.Nomal;
@@ -71,7 +71,7 @@ public class GameManager : SingletonMono<GameManager>
                 zPoint += 1200;
                 cameraYPoint -= 100;
                 cameraZPoint += 1200;
-                pastStage[pastNumber] = Instantiate(StageList.Instance.BoxStage[modeN], new Vector3(0, yPoint-100, zPoint), Quaternion.identity);
+                pastStage[pastNumber] = Instantiate(StageList.Instance.BoxStage[modeN], new Vector3(0, yPoint - 100, zPoint), Quaternion.identity);
                 CreateEnergyNormal(pastStage[pastNumber]);
                 break;
             case 1:
@@ -81,21 +81,22 @@ public class GameManager : SingletonMono<GameManager>
                 zPoint += 1200;
                 cameraYPoint -= 100;
                 cameraZPoint += 1200;
-                pastStage[pastNumber] = Instantiate(StageList.Instance.TubeStage[modeN], new Vector3(0, yPoint-100, zPoint), Quaternion.identity);
+                pastStage[pastNumber] = Instantiate(StageList.Instance.TubeStage[modeN], new Vector3(0, yPoint - 100, zPoint), Quaternion.identity);
                 CreateEnergyTube(pastStage[pastNumber]);
                 break;
             case 2:
                 nextStageMode = StageMode.Fall;
                 modeN = Random.Range(0, fallStageLength);
                 yPoint -= 100;
-                zPoint += 700;
+                zPoint += 1200;
                 cameraYPoint -= 100;
-                cameraZPoint += 700;
+                cameraZPoint += 1200;
                 pastStage[pastNumber] = Instantiate(StageList.Instance.FallStage[modeN], new Vector3(0, yPoint - 100, zPoint), Quaternion.identity);
+                CreateEnergyFall(pastStage[pastNumber]);
                 break;
         }
         //削除
-        if(pastNumber==3)
+        if (pastNumber == 3)
         {
             Destroy(pastStage[0]);
             Destroy(pastStage[1]);
@@ -124,7 +125,7 @@ public class GameManager : SingletonMono<GameManager>
     private void CreateEnergyNormal(GameObject o)
     {
         float large = Random.Range(10, 15);
-        for(int i=0;i<large;i++)
+        for (int i = 0; i < large; i++)
         {
             GameObject item;
             item = Instantiate(StageList.Instance.EnergyItem);
@@ -132,7 +133,7 @@ public class GameManager : SingletonMono<GameManager>
             float pos = Random.Range(-Front, Back);
             float posLocal = Random.Range(-boxEdge, boxEdge);
             int gravMode = Random.Range(1, 5);
-            switch(gravMode)
+            switch (gravMode)
             {
                 //上
                 case 0:
@@ -165,7 +166,38 @@ public class GameManager : SingletonMono<GameManager>
             float pos = Random.Range(-Front, Back);
             int x = Random.Range(-180, 180); int y = Random.Range(-180, 180);
             Vector2 xy = new Vector2(x, y).normalized * tubeEdge;
-            item.transform.localPosition = new Vector3(xy.x,xy.y,pos);
+            item.transform.localPosition = new Vector3(xy.x, xy.y, pos);
+        }
+    }
+    private void CreateEnergyFall(GameObject o)
+    {
+        float large = Random.Range(10, 15);
+        for (int i = 0; i < large; i++)
+        {
+            GameObject item;
+            item = Instantiate(StageList.Instance.EnergyItem);
+            item.transform.parent = o.transform;
+            float pos = Random.Range(-1000, 0);
+            float posLocal = Random.Range(-boxEdge, boxEdge);
+            int gravMode = Random.Range(1, 5);
+            switch (gravMode)
+            {
+                //上
+                case 0:
+                    item.transform.localPosition = new Vector3(boxEdge, pos, posLocal);
+                    break;
+                //下
+                case 1:
+                    item.transform.localPosition = new Vector3(-boxEdge, pos, posLocal);
+                    break;
+                //右
+                case 2:
+                    item.transform.localPosition = new Vector3(posLocal, pos, boxEdge);
+                    break;
+                case 3:
+                    item.transform.localPosition = new Vector3(posLocal, pos, -boxEdge);
+                    break;
+            }
         }
     }
 }
