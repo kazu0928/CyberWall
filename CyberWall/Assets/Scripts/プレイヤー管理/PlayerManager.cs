@@ -89,6 +89,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
     {
         controller.ChangeGravityModeNomal(gravityMode);
     }
+    public float GetAccelSpeed()
+    {
+        return controller.GetAccelSpeed();
+    }
     IEnumerator damage()
     {
         fx.enabled = true;

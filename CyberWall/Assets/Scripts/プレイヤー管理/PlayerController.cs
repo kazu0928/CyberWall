@@ -182,4 +182,8 @@ public class PlayerController
     {
         playerGravity.mode = gravityMode;
     }
+    public float GetAccelSpeed()
+    {
+        return playerMover.acceleSpeed;
+    }
 }

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7aaf767beb1ca1347a7fc1aebf41422f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: GAU_font_PRIVAtE
+  fontNames:
+  - GAU_font_PRIVAtE
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

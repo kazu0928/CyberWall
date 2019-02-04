@@ -19,7 +19,7 @@ MonoBehaviour:
   maxRotation: 90
   cameraSpeed: 850
   cameraMode: 1
-  cameraFixed: 000000000100000002000000
+  cameraFixed: 0100000002000000
   leapFlag: 0
   yPoint: 0
   rotationFlag: 1
