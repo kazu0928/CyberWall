@@ -9,6 +9,7 @@ public class GameManager : SingletonMono<GameManager>
 {
     public float yPoint; public float zPoint;
     public float cameraYPoint; public float cameraZPoint;
+    public float cameraRotaX;public float cameraRotaY;
 
     private int modeLength;
     private int boxStageLength;
@@ -61,6 +62,8 @@ public class GameManager : SingletonMono<GameManager>
         nowStageMode = mode;
         //次どのモードか
         int modeN = Random.Range(0, modeLength);
+        cameraRotaX = Random.Range(-10, 10);
+        cameraRotaY = Random.Range(-10, 10);
         //次どの配列か
         switch (modeN)
         {
@@ -153,7 +156,7 @@ public class GameManager : SingletonMono<GameManager>
             }
         }
     }
-    const float tubeEdge = 4;
+    const float tubeEdge = 5;
     private void CreateEnergyTube(GameObject o)
     {
         float large = Random.Range(10, 15);
@@ -171,7 +174,7 @@ public class GameManager : SingletonMono<GameManager>
     }
     private void CreateEnergyFall(GameObject o)
     {
-        float large = Random.Range(10, 15);
+        float large = Random.Range(19, 30);
         for (int i = 0; i < large; i++)
         {
             GameObject item;

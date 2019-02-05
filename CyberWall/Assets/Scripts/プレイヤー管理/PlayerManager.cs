@@ -38,6 +38,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
     }
     private void Update()
     {
+        if (PlayerObjectManager.Instance.PlayerObject == null)
+        {
+            return;
+        }
         if (nowStageMode == StageMode.Tube)
         {
             controller.MoveTube();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: "\u30D5\u30A9\u30FC\u30EB\u30AB\u30E1\u30E9"
   m_EditorClassIdentifier: 
   distance: 25.89
-  lookAngles: {x: 89.36, y: 0}
+  lookAngles: {x: 86.4, y: 0}
   offsetPos: {x: 0, y: 0, z: 2.92}
   plusTargetPos: {x: 0, y: 0, z: 0}
   trackingSpeed: 0.08

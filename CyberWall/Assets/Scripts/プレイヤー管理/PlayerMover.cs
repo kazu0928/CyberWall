@@ -11,7 +11,7 @@ public class PlayerMover
 {
     public float acceleSpeed = 50;  //現在の移動速度
     public float saveAcceleSpeed = 50;
-    private float plusSpeed;
+    public float plusSpeed;
     /// <summary>
     /// コンストラクタ
     /// </summary>

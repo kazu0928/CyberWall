@@ -32,7 +32,8 @@ public class EnergySlider : SingletonMono<EnergySlider>
         {
             hp = 100;
         }
-        if(hp<=0)
+        _text.text = ((int)score).ToString();
+        if (hp<=0)
         {
             alpha += 1 * Time.deltaTime;
             _gameOver.color = new Color(255, 255, 255, alpha);
@@ -42,9 +43,9 @@ public class EnergySlider : SingletonMono<EnergySlider>
                 Destroy(
                 PlayerObjectManager.Instance.PlayerObject);
             }
+            return;
         }
         score += PlayerManager.Instance.GetAccelSpeed() * Time.deltaTime;
-        _text.text=((int)score).ToString();
     }
     public void ChangePlusEnergyBar(float n)
     {
