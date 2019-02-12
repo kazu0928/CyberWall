@@ -13,6 +13,9 @@ public class StageList : SingletonMono<StageList>
     [SerializeField]
     private GameObject energyItem;
 
+    [SerializeField]
+    private GameObject[] debugStage;
+
     public GameObject[] BoxStage
     {
         get { return boxStage; }
@@ -28,5 +31,9 @@ public class StageList : SingletonMono<StageList>
     public GameObject EnergyItem
     {
         get { return energyItem; }
+    }
+    public GameObject[] DebugStage
+    {
+        get { return debugStage; }
     }
 }

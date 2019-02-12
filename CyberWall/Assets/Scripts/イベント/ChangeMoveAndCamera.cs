@@ -20,7 +20,17 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
     private StartEnd startOrEnd;
     public void OnPlayEffect(Collider other = null)
     {
-        return;
+        if (startOrEnd == StartEnd.Start)
+        {
+            ParticleSystem playerParticle = Instantiate(EffectList.Instance.GetEffect(EffectType.PlayerDamage).gameObject, PlayerObjectManager.Instance.TiltObject.transform.position + PlayerObjectManager.Instance.TiltObject.transform.up * -1, Quaternion.Euler(-90, 0, 0)).GetComponent<ParticleSystem>();
+            playerParticle.transform.parent = PlayerObjectManager.Instance.PlayerObject.gameObject.transform;
+        }
+        if (startOrEnd == StartEnd.FallStart)
+        {
+            ParticleSystem playerParticle = Instantiate(EffectList.Instance.GetEffect(EffectType.PlayerDamage).gameObject, PlayerObjectManager.Instance.TiltObject.transform.position + PlayerObjectManager.Instance.TiltObject.transform.up * -1, Quaternion.Euler(-90, 0, 0)).GetComponent<ParticleSystem>();
+            playerParticle.transform.parent = PlayerObjectManager.Instance.PlayerObject.gameObject.transform;
+        }
+
     }
 
     public void OnPlayEvent()

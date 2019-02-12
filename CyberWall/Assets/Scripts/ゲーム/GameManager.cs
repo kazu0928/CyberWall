@@ -15,6 +15,7 @@ public class GameManager : SingletonMono<GameManager>
     private int boxStageLength;
     private int tubeStageLength;
     private int fallStageLength;
+    private int debugLength;
 
     private StageMode nowStageMode;
     private GameObject[] pastStage = { null, null, null, null };//消す
@@ -24,19 +25,34 @@ public class GameManager : SingletonMono<GameManager>
     private StageMode nextStageMode;
     private StageMode next2StageMode;//使ってない
 
+    [SerializeField]
+    private bool DebugMode = false;
+
     void Start()
     {
         pastNumber = 0;
         startFlag = false;
         yPoint = 0; zPoint = 0;
         cameraYPoint = 0; cameraZPoint = 0;
+        int modeN;
+        //デバッグモード
+        if (DebugMode)
+        {
+            debugLength = StageList.Instance.DebugStage.Length;
+            modeN = Random.Range(0, debugLength);
+            pastStage[pastNumber] = Instantiate(StageList.Instance.DebugStage[modeN], new Vector3(0, -100, 0), Quaternion.identity);
+            pastNumber++;
+
+            return;
+        }
+
         //mode数を取得
         modeLength = System.Enum.GetValues(typeof(StageMode)).Length;
         boxStageLength = StageList.Instance.BoxStage.Length;
         tubeStageLength = StageList.Instance.TubeStage.Length;
         fallStageLength = StageList.Instance.FallStage.Length;
         //次どのモードか
-        int modeN = Random.Range(0, 2);
+        modeN = Random.Range(0, 2);
         //次どの配列か
         switch (modeN)
         {
@@ -139,18 +155,18 @@ public class GameManager : SingletonMono<GameManager>
             switch (gravMode)
             {
                 //上
-                case 0:
+                case 1:
                     item.transform.localPosition = new Vector3(posLocal, boxEdge, pos);
                     break;
                 //下
-                case 1:
+                case 2:
                     item.transform.localPosition = new Vector3(posLocal, -boxEdge, pos);
                     break;
                 //右
-                case 2:
+                case 3:
                     item.transform.localPosition = new Vector3(boxEdge, posLocal, pos);
                     break;
-                case 3:
+                case 4:
                     item.transform.localPosition = new Vector3(-boxEdge, posLocal, pos);
                     break;
             }
@@ -178,7 +194,7 @@ public class GameManager : SingletonMono<GameManager>
         for (int i = 0; i < large; i++)
         {
             GameObject item;
-            item = Instantiate(StageList.Instance.EnergyItem);
+            item = Instantiate(StageList.Instance.EnergyItem,new Vector3(0,300,0), StageList.Instance.EnergyItem.transform.rotation);
             item.transform.parent = o.transform;
             float pos = Random.Range(-1000, 0);
             float posLocal = Random.Range(-boxEdge, boxEdge);

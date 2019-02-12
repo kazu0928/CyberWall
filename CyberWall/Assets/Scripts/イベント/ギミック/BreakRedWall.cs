@@ -6,6 +6,8 @@ public class BreakRedWall : MonoBehaviour,IEventGimic
 {
     [SerializeField]
     private float minusBreakSpeed = 90;
+    [SerializeField]
+    private int minusHp = 10;
     public void OnPlayEffect(Collider other = null)
     {
         if(other==null)
@@ -24,6 +26,7 @@ public class BreakRedWall : MonoBehaviour,IEventGimic
     {
         PlayerManager.Instance.PlusSpeedChange(-minusBreakSpeed);
         PlayerManager.Instance.StartDamage();
+        EnergySlider.Instance.ChangePlusEnergyBar(-minusHp);
     }
     public void OnPlaySound()
     {

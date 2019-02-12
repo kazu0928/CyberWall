@@ -183,7 +183,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
         //カメラ角度
         managerPos.localEulerAngles = lookAngles;
-        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.08f);
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.03f);
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
         if (mainCameraParameter.RotationFlag)
@@ -241,7 +241,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
         //カメラ角度
         managerPos.localEulerAngles = lookAngles;
-        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles + new Vector2(GameManager.Instance.cameraRotaX, GameManager.Instance.cameraRotaY), 0.08f);
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles + new Vector2(GameManager.Instance.cameraRotaX, GameManager.Instance.cameraRotaY), 0.03f);
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
         if (mainCameraParameter.RotationFlag)
@@ -296,7 +296,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
         //カメラ角度
         managerPos.localEulerAngles = lookAngles;
-        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.08f);
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 0.03f);
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
         if (mainCameraParameter.RotationFlag)

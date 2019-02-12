@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallWall : MonoBehaviour,IEventGimic
+public class FallWall : MonoBehaviour
 {
-    public void OnPlayEffect(Collider other = null)
+    Rigidbody rb;
+    private void Start()
     {
-        return;
+        rb = GetComponent<Rigidbody>();
     }
-
-    public void OnPlayEvent()
+    private void Update()
     {
-
-    }
-
-    public void OnPlaySound()
-    {
-        return;
+        if(PlayerObjectManager.Instance.PlayerObject==null)
+        {
+            return;
+        }
+        rb.AddForce(-PlayerObjectManager.Instance.PlayerObject.transform.up.normalized *
+PlayerManager.Instance.PlayerParam.StartGravitySpeed - PlayerObjectManager.Instance.PlayerObject.transform.up.normalized *
+Time.deltaTime * 60 * PlayerManager.Instance.PlayerParam.GravitySpeed, ForceMode.Acceleration);
     }
 }

@@ -8,6 +8,8 @@ public class FanGimic : MonoBehaviour,IEventGimic
     private float minusBreakSpeed = 90;
     [SerializeField]
     private EffectType effectType = EffectType.WallBreakRed;
+    [SerializeField]
+    private int minusHp = 10;
     public void OnPlayEffect(Collider other = null)
     {
         if (other == null)
@@ -26,6 +28,7 @@ public class FanGimic : MonoBehaviour,IEventGimic
     {
         PlayerManager.Instance.PlusSpeedChange(-minusBreakSpeed);
         PlayerManager.Instance.StartDamage();
+        EnergySlider.Instance.ChangePlusEnergyBar(-minusHp);
     }
     public void OnPlaySound()
     {

@@ -13,6 +13,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
     //
     [SerializeField]
     private PlayerParameter parameter;
+    public PlayerParameter PlayerParam
+    {
+        get { return parameter; }
+    }
     private PlayerController controller;
     private GameObject speedEffectObject;
     //画面効果
