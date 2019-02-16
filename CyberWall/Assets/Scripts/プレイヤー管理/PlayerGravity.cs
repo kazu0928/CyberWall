@@ -95,6 +95,6 @@ public class PlayerGravity
     /// </summary>
     public void GravityChangeTube()
     {
-       gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(PlayerObjectManager.Instance.PlayerObject.transform.forward, hitGround.normal).normalized, hitGround.normal), 0.2f);
+       gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(gameObject.transform.forward + Vector3.ProjectOnPlane(Vector3.forward, hitGround.normal).normalized, hitGround.normal), 0.2f);
     }
 }
