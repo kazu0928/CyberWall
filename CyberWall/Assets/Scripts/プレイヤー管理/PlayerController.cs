@@ -165,10 +165,6 @@ public class PlayerController
         MoveDown();
         MoveLRFB();
     }
-    public void MoveLace()
-    {
-
-    }
 
     public void PlusSpeedChange(float speed)
     {
