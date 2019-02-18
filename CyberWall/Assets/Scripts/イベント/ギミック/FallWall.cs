@@ -15,8 +15,8 @@ public class FallWall : MonoBehaviour
         {
             return;
         }
-        rb.AddForce(-PlayerObjectManager.Instance.PlayerObject.transform.up.normalized *
+        rb.AddForce((-PlayerObjectManager.Instance.PlayerObject.transform.up.normalized *
 PlayerManager.Instance.PlayerParam.StartGravitySpeed - PlayerObjectManager.Instance.PlayerObject.transform.up.normalized *
-Time.deltaTime * 60 * PlayerManager.Instance.PlayerParam.GravitySpeed, ForceMode.Acceleration);
+ PlayerManager.Instance.PlayerParam.GravitySpeed)-rb.velocity*Time.deltaTime * 60, ForceMode.Acceleration);
     }
 }

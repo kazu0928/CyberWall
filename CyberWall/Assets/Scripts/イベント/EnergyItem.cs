@@ -19,6 +19,7 @@ public class EnergyItem : MonoBehaviour,IEventGimic
 
     public void OnPlaySound()
     {
+        SoundManager.Instance.PlayGetItemEnergy();
         return;
     }
 }

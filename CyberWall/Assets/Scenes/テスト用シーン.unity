@@ -15,12 +15,12 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
   m_Fog: 1
-  m_FogColor: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.18382353, g: 0.18382353, b: 0.18382353, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0.72
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.024918929, g: 0.025013322, b: 0.024918929, a: 1}
+  m_IndirectSpecularColor: {r: 0.024446152, g: 0.024446152, b: 0.024446152, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -64,7 +64,8 @@ LightmapSettings:
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
     m_Padding: 2
-    m_LightmapParameters: {fileID: 0}
+    m_LightmapParameters: {fileID: 15201, guid: 0000000000000000f000000000000000,
+      type: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
     m_FinalGather: 0
@@ -223,10 +224,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4980073893993328, guid: 3233851b7b1733443992e6e5f8f5ebc9, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3233851b7b1733443992e6e5f8f5ebc9, type: 2}
   m_IsPrefabParent: 0
@@ -262,6 +259,12 @@ MonoBehaviour:
   breakWall:
   - {fileID: 8300000, guid: f9c40cfc07be7524cabb44e12b20da6d, type: 3}
   - {fileID: 8300000, guid: ee5cb00fdf2274e44bf0407c80bd4f43, type: 3}
+  getItemEnergy:
+  - {fileID: 8300000, guid: 4278936b47e98bd4081b76f8958c2d1e, type: 3}
+  changeGrav:
+  - {fileID: 8300000, guid: df257c4b56014bf4681184fca6362131, type: 3}
+  changeGravInput:
+  - {fileID: 8300000, guid: ffb61013a23b7fb4f857bbaec7499d04, type: 3}
 --- !u!4 &420852718
 Transform:
   m_ObjectHideFlags: 0
@@ -284,11 +287,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8ab328e218aa7ae4fbc196ef4ab9192e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.44
+  m_Volume: 0.18
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -342,7 +345,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -575,7 +578,7 @@ Prefab:
     - target: {fileID: 114153104963535114, guid: ce21b402c020e904c9e584edbaeadcbc,
         type: 2}
       propertyPath: DebugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114160150020009042, guid: ce21b402c020e904c9e584edbaeadcbc,
         type: 2}
@@ -773,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDs: 0
-  minusHp: 3
+  minusHp: 1
   score: 0
 --- !u!1001 &929955767
 Prefab:
@@ -865,8 +868,8 @@ Camera:
   m_GameObject: {fileID: 1203383696}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

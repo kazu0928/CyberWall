@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Bits: 768
   radGround: 0.49
   gravitySpeed: 60
-  startGravitySpeed: 21.19
+  startGravitySpeed: 50
   speedEffetObj: {fileID: 1373253037774388, guid: ee9df3c09d8e6974c94e9e833613fbad,
     type: 2}
   speedOnEffectSpeed: 10

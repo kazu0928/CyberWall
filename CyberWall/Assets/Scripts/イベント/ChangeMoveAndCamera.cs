@@ -41,8 +41,9 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
         if(startOrEnd==StartEnd.End)
         {
             PlayerManager.Instance.SaveSpeedChange(10);
+            SoundManager.Instance.ChangeGravity();
         }
-        if(startOrEnd==StartEnd.Start)
+        if (startOrEnd==StartEnd.Start)
         {
             PlayerManager.Instance.SaveSpeedReflection();
             GameManager.Instance.RandomNextCreateMode(changeStage);
@@ -63,6 +64,7 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
             PlayerManager.Instance.SaveSpeedChange(0);
             GameManager.Instance.cameraYPoint -= 1005;
             GameManager.Instance.cameraZPoint -= 500;
+            SoundManager.Instance.ChangeGravity();
         }
         Destroy(gameObject);
     }

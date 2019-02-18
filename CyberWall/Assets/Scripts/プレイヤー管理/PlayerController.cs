@@ -92,6 +92,7 @@ public class PlayerController
             playerGravity.GravityChange(playerGravity.mode);
             return;
         }
+        SoundManager.Instance.ChangeGravityInput();//重力変更音
         playerGravity.GravityChange(gravityMode);
         playerMover.JumpRb(parameter.GravityChangeJumpPower);
         playerGravity.isGround = false;
