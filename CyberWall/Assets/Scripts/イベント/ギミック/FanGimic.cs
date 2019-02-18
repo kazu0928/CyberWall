@@ -21,7 +21,7 @@ public class FanGimic : MonoBehaviour,IEventGimic
         ParticleSystem particle = Instantiate(EffectList.Instance.GetEffect(effectType).gameObject, hitPos, Quaternion.Euler(-90, 0, 0)).GetComponent<ParticleSystem>();
         ParticleSystem playerParticle = Instantiate(EffectList.Instance.GetEffect(EffectType.PlayerDamage).gameObject, PlayerObjectManager.Instance.TiltObject.transform.position + PlayerObjectManager.Instance.TiltObject.transform.up * 2, Quaternion.Euler(-90, 0, 0)).GetComponent<ParticleSystem>();
         playerParticle.transform.parent = PlayerObjectManager.Instance.PlayerObject.gameObject.transform;
-        Destroy(other.gameObject);
+        Destroy(gameObject.transform.parent.parent.gameObject);
         particle.Play();
     }
     public void OnPlayEvent()
@@ -29,6 +29,7 @@ public class FanGimic : MonoBehaviour,IEventGimic
         PlayerManager.Instance.PlusSpeedChange(-minusBreakSpeed);
         PlayerManager.Instance.StartDamage();
         EnergySlider.Instance.ChangePlusEnergyBar(-minusHp);
+        PlusScore.Instance.resetScorePlus();
     }
     public void OnPlaySound()
     {

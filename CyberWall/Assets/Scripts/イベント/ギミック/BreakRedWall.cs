@@ -27,6 +27,7 @@ public class BreakRedWall : MonoBehaviour,IEventGimic
         PlayerManager.Instance.PlusSpeedChange(-minusBreakSpeed);
         PlayerManager.Instance.StartDamage();
         EnergySlider.Instance.ChangePlusEnergyBar(-minusHp);
+        PlusScore.Instance.resetScorePlus();
     }
     public void OnPlaySound()
     {

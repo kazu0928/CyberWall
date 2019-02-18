@@ -302,6 +302,7 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         if (mainCameraParameter.RotationFlag)
         {
             rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+            
         }
         //壁めり込み判定
         RaycastHit hit;

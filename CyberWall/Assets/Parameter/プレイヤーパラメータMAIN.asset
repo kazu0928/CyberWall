@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1790448767292972, guid: 3233851b7b1733443992e6e5f8f5ebc9, type: 2}
   startAccelSpeed: 10
-  rightLeftSpeed: 70
-  rightLeftAirSpeed: 40
+  rightLeftSpeed: 150
+  rightLeftAirSpeed: 100
   upSpeed: 0.5
   jumpPower: 30
   gravityChangeJumpPower: 35

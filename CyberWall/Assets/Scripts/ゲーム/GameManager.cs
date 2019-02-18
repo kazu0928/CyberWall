@@ -30,6 +30,7 @@ public class GameManager : SingletonMono<GameManager>
 
     void Start()
     {
+        Input.gyro.enabled = true;
         pastNumber = 0;
         startFlag = false;
         yPoint = 0; zPoint = 0;

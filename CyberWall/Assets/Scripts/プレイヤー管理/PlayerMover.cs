@@ -39,18 +39,18 @@ public class PlayerMover
     {
         Rigidbody rb = PlayerObjectManager.Instance.rb;
         //rb.AddTorque((PlayerObjectManager.Instance.PlayerObject.transform.up * inputX * RightLeftSpeed ) * Time.deltaTime * 60);
-        rb.AddForce((PlayerObjectManager.Instance.PlayerObject.transform.right * inputX * 50-rb.velocity)* Time.deltaTime * 60);
+        rb.AddForce((PlayerObjectManager.Instance.PlayerObject.transform.right * inputX * RightLeftSpeed-rb.velocity)* Time.deltaTime * 60);
     }
     // 前後移動
     public void MoveControlRbFB(float inputY, float RightLeftSpeed)
     {
         Rigidbody rb = PlayerObjectManager.Instance.rb;
-        rb.AddForce((PlayerObjectManager.Instance.PlayerObject.transform.forward * inputY * RightLeftSpeed-rb.velocity)* Time.deltaTime * 60);
+        rb.AddForce((PlayerObjectManager.Instance.PlayerObject.transform.forward * inputY * RightLeftSpeed-rb.velocity)* Time.deltaTime * 60);      
     }
     public void MoveControlRbTube(float inputX, float RightLeftSpeed, Vector3 nomalVector)
     {
         Rigidbody rb = PlayerObjectManager.Instance.rb;
-        rb.AddForce((Vector3.ProjectOnPlane(PlayerObjectManager.Instance.PlayerObject.transform.right, nomalVector) * inputX * 50 - rb.velocity) * Time.deltaTime * 60);
+        rb.AddForce((Vector3.ProjectOnPlane(PlayerObjectManager.Instance.PlayerObject.transform.right, nomalVector) * inputX * RightLeftSpeed - rb.velocity) * Time.deltaTime * 60);
         //rb.AddTorque((PlayerObjectManager.Instance.PlayerObject.transform.up * inputX * RightLeftSpeed) * Time.deltaTime * 60);
     }
     /// <summary>

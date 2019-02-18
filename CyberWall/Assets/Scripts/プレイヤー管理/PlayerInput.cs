@@ -6,11 +6,27 @@ public class PlayerInput
 {
     public float inputX;
     public float inputY;
+    public bool androidFlag = false;
 
     //移動入力メソッド
     public float InputHorizontal()
     {
         inputX = Input.GetAxisRaw("Horizontal");
+
+        //android操作
+
+        //float a =
+        //(Quaternion.Euler(0, 0, -180) * Quaternion.Euler(-90, 0, 0) * Input.gyro.attitude * Quaternion.Euler(0, 0, 180)).eulerAngles.z;
+        //if(a>180)
+        //{
+        //    a -= 360;
+        //}
+        //if(Mathf.Abs(a)>45)
+        //{
+        //    a = 45 * Mathf.Sign(a);
+        //}
+        //a /= 45;
+        //inputX =-a;
         return inputX;
     }
     public float InputVertical()
