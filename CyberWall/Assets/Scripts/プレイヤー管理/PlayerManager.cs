@@ -32,7 +32,8 @@ public class PlayerManager : SingletonMono<PlayerManager>
         fx = Camera.main.gameObject.GetComponent<GlitchFx>();
         //プレイヤーにイベント用のスクリプトをアタッチ
         playerObj.AddComponent<PlayerOnEvent>();
-        if(parameter.SpeedEffectObject != null)
+        PlayerObjectManager.Instance.init();
+        if (parameter.SpeedEffectObject != null)
         {
             speedEffectObject = Instantiate(parameter.SpeedEffectObject, new Vector3(100, 100, -500), parameter.SpeedEffectObject.transform.rotation);
             controller = new PlayerController(parameter, speedEffectObject);

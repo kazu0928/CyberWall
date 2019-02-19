@@ -17,7 +17,16 @@ public class PlusEventScore : MonoBehaviour, IEventGimic
         }
         else
         {
-            PlusScore.Instance.plusScore *= 2;
+            if (PlusScore.Instance.plusScore >= 1000)
+            {
+                int score = PlusScore.Instance.plusScore;
+                PlusScore.Instance.resetScorePlus();
+                PlusScore.Instance.plusScore = score;
+            }
+            else
+            {
+                PlusScore.Instance.plusScore += 100;
+            }
         }
         return;
     }

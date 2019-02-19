@@ -7,4 +7,8 @@ public class GimicList
 {
     [SerializeField]
     private GameObject[] gimicSet;
+    public GameObject[] GimicSet
+    {
+        get { return gimicSet; }
+    }
 }

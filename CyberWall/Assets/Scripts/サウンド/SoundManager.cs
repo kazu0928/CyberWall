@@ -12,6 +12,8 @@ public class SoundManager : SingletonMono<SoundManager>
     private AudioClip[] changeGrav;
     [SerializeField]
     private AudioClip[] changeGravInput;
+    [SerializeField]
+    private AudioClip startSound;
     AudioSource source;
 	void Start ()
     {
@@ -48,5 +50,9 @@ public class SoundManager : SingletonMono<SoundManager>
         {
             source.PlayOneShot(changeGravInput[i]);
         }
+    }
+    public void PlayStartSound()
+    {
+        source.PlayOneShot(startSound);
     }
 }

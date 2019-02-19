@@ -54,4 +54,8 @@ public class PlayerObjectManager
     {
         get { return rigidbody; }
     }
+    public void init()
+    {
+        instance = new PlayerObjectManager();
+    }
 }

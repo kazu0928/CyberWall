@@ -12,9 +12,13 @@ public class EnergySlider : SingletonMono<EnergySlider>
     float alpha;
     float hp;
     public float minusHp;
-    public float score;
+    public int score;
+    bool overFlag = false;
+    [SerializeField]
+    private GameObject rankingText;
     void Start()
     {
+        overFlag = false;
         // スライダーを取得する
         _slider = GameObject.Find("Slider").GetComponent<Slider>();
         _gameOver = GameObject.Find("GameOver").GetComponent<RawImage>();
@@ -35,6 +39,7 @@ public class EnergySlider : SingletonMono<EnergySlider>
         _text.text = ((int)score).ToString();
         if (hp<=0)
         {
+            PlusScore.Instance.resetScorePlus();
             alpha += 1 * Time.deltaTime;
             _gameOver.color = new Color(255, 255, 255, alpha);
             if(PlayerObjectManager.Instance.PlayerObject!=null)
@@ -42,6 +47,15 @@ public class EnergySlider : SingletonMono<EnergySlider>
                 ParticleSystem playerParticle = Instantiate(EffectList.Instance.GetEffect(EffectType.PlayerDamage).gameObject, PlayerObjectManager.Instance.TiltObject.transform.position + PlayerObjectManager.Instance.TiltObject.transform.up * 2, Quaternion.Euler(-90, 0, 0)).GetComponent<ParticleSystem>();
                 Destroy(
                 PlayerObjectManager.Instance.PlayerObject);
+            }
+            if (overFlag) return;
+            if(alpha>1)
+            {
+                GameObject a =
+                Instantiate(rankingText);
+                a.transform.parent = transform;
+                a.transform.localPosition=new Vector3(1040,0,0);
+                overFlag = true;
             }
             return;
         }

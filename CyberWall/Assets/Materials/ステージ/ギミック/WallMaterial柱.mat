@@ -113,8 +113,8 @@ Material:
     - _V_CW_SecondaryTex_Blend: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.22758621, b: 0, a: 1}
-    - _EmissionColor: {r: 1.253, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1.253, g: 1.253, b: 1.253, a: 1}
     - _V_CW_MainTex_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _V_CW_ReflectColor: {r: 1, g: 1, b: 1, a: 1}
     - _V_CW_Rim_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -53,7 +53,7 @@ public class GameManager : SingletonMono<GameManager>
         tubeStageLength = StageList.Instance.TubeStage.Length;
         fallStageLength = StageList.Instance.FallStage.Length;
         //次どのモードか
-        modeN = Random.Range(0, 2);
+        modeN = Random.Range(1, 2);
         //次どの配列か
         switch (modeN)
         {
@@ -172,14 +172,24 @@ public class GameManager : SingletonMono<GameManager>
                     break;
             }
         }
+        //ここからギミック生成
+        for (int i = 0; i < 7; i++)
+        {
+            GameObject gim;
+            int r = Random.Range(0, StageList.Instance.BoxGimicList.Length);
+            int r2 = Random.Range(0, StageList.Instance.BoxGimicList[r].GimicSet.Length);
+            gim = Instantiate(StageList.Instance.BoxGimicList[r].GimicSet[r2]);
+            gim.transform.parent = o.transform;
+            gim.transform.localPosition = new Vector3(0, 0, 460 - (i * 150));
+        }
     }
     const float tubeEdge = 5;
     private void CreateEnergyTube(GameObject o)
     {
+        //アイテム生成
         float large = Random.Range(10, 15);
         for (int i = 0; i < large; i++)
         {
-
             GameObject item;
             item = Instantiate(StageList.Instance.EnergyItem);
             item.transform.parent = o.transform;
@@ -187,6 +197,16 @@ public class GameManager : SingletonMono<GameManager>
             int x = Random.Range(-180, 180); int y = Random.Range(-180, 180);
             Vector2 xy = new Vector2(x, y).normalized * tubeEdge;
             item.transform.localPosition = new Vector3(xy.x, xy.y, pos);
+        }
+        //ここからギミック生成
+        for (int i = 0; i < 7; i++)
+        {
+            GameObject gim;
+            int r = Random.Range(0, StageList.Instance.TubeGimicList.Length);
+            int r2 = Random.Range(0, StageList.Instance.TubeGimicList[r].GimicSet.Length);
+            gim = Instantiate(StageList.Instance.TubeGimicList[r].GimicSet[r2]);
+            gim.transform.parent = o.transform;
+            gim.transform.localPosition = new Vector3(0, 0, 460 - (i * 150));
         }
     }
     private void CreateEnergyFall(GameObject o)
@@ -199,25 +219,36 @@ public class GameManager : SingletonMono<GameManager>
             item.transform.parent = o.transform;
             float pos = Random.Range(-1000, 0);
             float posLocal = Random.Range(-boxEdge, boxEdge);
-            int gravMode = Random.Range(1, 5);
-            switch (gravMode)
-            {
-                //上
-                case 0:
-                    item.transform.localPosition = new Vector3(boxEdge, pos, posLocal);
-                    break;
-                //下
-                case 1:
-                    item.transform.localPosition = new Vector3(-boxEdge, pos, posLocal);
-                    break;
-                //右
-                case 2:
-                    item.transform.localPosition = new Vector3(posLocal, pos, boxEdge);
-                    break;
-                case 3:
-                    item.transform.localPosition = new Vector3(posLocal, pos, -boxEdge);
-                    break;
-            }
+            //int gravMode = Random.Range(1, 5);
+            //switch (gravMode)
+            //{
+            //    //上
+            //    case 0:
+            //        item.transform.localPosition = new Vector3(boxEdge, pos, posLocal);
+            //        break;
+            //    //下
+            //    case 1:
+            //        item.transform.localPosition = new Vector3(-boxEdge, pos, posLocal);
+            //        break;
+            //    //右
+            //    case 2:
+            //        item.transform.localPosition = new Vector3(posLocal, pos, boxEdge);
+            //        break;
+            //    case 3:
+            //        item.transform.localPosition = new Vector3(posLocal, pos, -boxEdge);
+            //        break;
+            //}
+            item.transform.localPosition = new Vector3(posLocal, pos, posLocal);
+        }
+        //ここからギミック生成
+        for (int i = 0; i < 7; i++)
+        {
+            GameObject gim;
+            int r = Random.Range(0, StageList.Instance.FallGimicList.Length);
+            int r2 = Random.Range(0, StageList.Instance.FallGimicList[r].GimicSet.Length);
+            gim = Instantiate(StageList.Instance.FallGimicList[r].GimicSet[r2]);
+            gim.transform.parent = o.transform;
+            gim.transform.localPosition = new Vector3(0, -960 + (i * 150),0 );
         }
     }
 }
