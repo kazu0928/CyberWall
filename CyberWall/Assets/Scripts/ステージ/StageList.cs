@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageList : SingletonMono<StageList>
 {
+
     [SerializeField]
     private GameObject[] boxStage;
     [SerializeField]
@@ -12,6 +13,8 @@ public class StageList : SingletonMono<StageList>
     private GameObject[] fallStage;
     [SerializeField]
     private GameObject energyItem;
+    [SerializeField]
+    private GimicList[] gimicSet;
 
     [SerializeField]
     private GameObject[] debugStage;

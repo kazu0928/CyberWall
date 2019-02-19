@@ -16,7 +16,7 @@ MonoBehaviour:
   rightLeftSpeed: 150
   rightLeftAirSpeed: 100
   upSpeed: 0.5
-  jumpPower: 30
+  jumpPower: 45
   gravityChangeJumpPower: 35
   maxSpeed: 200
   tiltSpeed: 4

@@ -45,7 +45,7 @@ public class EnergySlider : SingletonMono<EnergySlider>
             }
             return;
         }
-        score += PlayerManager.Instance.GetAccelSpeed() * Time.deltaTime;
+        //score += PlayerManager.Instance.GetAccelSpeed() * Time.deltaTime;
     }
     public void ChangePlusEnergyBar(float n)
     {
