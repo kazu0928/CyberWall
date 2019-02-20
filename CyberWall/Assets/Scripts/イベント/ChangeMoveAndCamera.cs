@@ -42,6 +42,17 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
         {
             PlayerManager.Instance.SaveSpeedChange(10);
             SoundManager.Instance.ChangeGravity();
+            EnergySlider.Instance.ChangePlusEnergyBar(10);
+            PlusScore.Instance.PlusScoreDirect(500);
+            int a = Random.Range(0, 2);
+            if(a==0)
+            {
+                PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0, 0.09f),0);
+            }
+            else
+            {
+                PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0, 10.0f));
+            }
         }
         if (startOrEnd==StartEnd.Start)
         {
@@ -65,6 +76,17 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
             GameManager.Instance.cameraYPoint -= 1005;
             GameManager.Instance.cameraZPoint -= 500;
             SoundManager.Instance.ChangeGravity();
+            EnergySlider.Instance.ChangePlusEnergyBar(10);
+            PlusScore.Instance.PlusScoreDirect(500);
+            int a = Random.Range(0, 2);
+            if (a == 0)
+            {
+                PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0, 0.09f), 0);
+            }
+            else
+            {
+                PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0, 10.0f));
+            }
         }
         Destroy(gameObject);
     }

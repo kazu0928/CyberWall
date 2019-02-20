@@ -144,11 +144,12 @@ public class GameManager : SingletonMono<GameManager>
     const float boxEdge = 9;
     private void CreateEnergyNormal(GameObject o)
     {
-        float large = Random.Range(10, 15);
+        float large = Random.Range(10, 25);
         for (int i = 0; i < large; i++)
         {
+            int itemRand = Random.Range(0, StageList.Instance.EnergyItem.Length);
             GameObject item;
-            item = Instantiate(StageList.Instance.EnergyItem);
+            item = Instantiate(StageList.Instance.EnergyItem[itemRand]);
             item.transform.parent = o.transform;
             float pos = Random.Range(-Front, Back);
             float posLocal = Random.Range(-boxEdge, boxEdge);
@@ -187,11 +188,12 @@ public class GameManager : SingletonMono<GameManager>
     private void CreateEnergyTube(GameObject o)
     {
         //アイテム生成
-        float large = Random.Range(10, 15);
+        float large = Random.Range(10, 25);
         for (int i = 0; i < large; i++)
         {
             GameObject item;
-            item = Instantiate(StageList.Instance.EnergyItem);
+            int itemRand = Random.Range(0, StageList.Instance.EnergyItem.Length);
+            item = Instantiate(StageList.Instance.EnergyItem[itemRand]);
             item.transform.parent = o.transform;
             float pos = Random.Range(-Front, Back);
             int x = Random.Range(-180, 180); int y = Random.Range(-180, 180);
@@ -215,7 +217,8 @@ public class GameManager : SingletonMono<GameManager>
         for (int i = 0; i < large; i++)
         {
             GameObject item;
-            item = Instantiate(StageList.Instance.EnergyItem,new Vector3(0,300,0), StageList.Instance.EnergyItem.transform.rotation);
+            int itemRand = Random.Range(0, StageList.Instance.EnergyItem.Length);
+            item = Instantiate(StageList.Instance.EnergyItem[itemRand],new Vector3(0,300,0), StageList.Instance.EnergyItem[itemRand].transform.rotation);
             item.transform.parent = o.transform;
             float pos = Random.Range(-1000, 0);
             float posLocal = Random.Range(-boxEdge, boxEdge);

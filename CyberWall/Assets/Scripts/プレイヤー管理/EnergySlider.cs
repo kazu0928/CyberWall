@@ -10,7 +10,7 @@ public class EnergySlider : SingletonMono<EnergySlider>
     RawImage _gameOver;
     Text _text;
     float alpha;
-    float hp;
+    public float hp;
     public float minusHp;
     public int score;
     bool overFlag = false;

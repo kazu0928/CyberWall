@@ -36,4 +36,13 @@ public class PlusScore : SingletonMono<PlusScore>
         a.GetComponent<PlusScoreUpdate>().plusScore = plusScore;    
         plusScore = 0;
     }
+    public void PlusScoreDirect(int sc)
+    {
+        GameObject a =
+Instantiate(plus, transform.position, Quaternion.identity);
+        a.transform.parent = transform.parent;
+        a.GetComponent<RectTransform>().position = text.rectTransform.position;
+        a.GetComponent<PlusScoreUpdate>().plusScore = sc;
+
+    }
 }

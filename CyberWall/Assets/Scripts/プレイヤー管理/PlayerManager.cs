@@ -108,5 +108,9 @@ public class PlayerManager : SingletonMono<PlayerManager>
         yield return new WaitForSeconds(1);
         fx.enabled = false;
     }
+    public void PlusUpSpeedAndMax(float up, float max)
+    {
+        controller.plusUpSpeedAndMax(up, max);
+    }
 
 }

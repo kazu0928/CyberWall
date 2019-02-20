@@ -23,7 +23,7 @@ public class ClickButton : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.anyKeyDown)
         {
             ExecuteEvents.Execute
             (

@@ -12,7 +12,7 @@ public class StageList : SingletonMono<StageList>
     [SerializeField]
     private GameObject[] fallStage;
     [SerializeField]
-    private GameObject energyItem;
+    private GameObject[] energyItem;
     [SerializeField]
     private GimicList[] boxGimicSet;
     [SerializeField]
@@ -35,7 +35,7 @@ public class StageList : SingletonMono<StageList>
     {
         get { return fallStage; }
     }
-    public GameObject EnergyItem
+    public GameObject[] EnergyItem
     {
         get { return energyItem; }
     }

@@ -12,6 +12,9 @@ public class PlayerController
     private PlayerParameter parameter;      //パラメータ
     private GameObject speedEffectObject;
 
+    private float plusTimeUpSpeed = 0;
+    private float maxPlusSpeed = 0;
+
     public PlayerController(PlayerParameter playerParameter, GameObject speedEffectObj = null)
     {
         parameter = playerParameter;
@@ -47,7 +50,7 @@ public class PlayerController
     {
         if (playerGravity.isGround)
         {
-            playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed);
+            playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed + plusTimeUpSpeed * 20);
         }
         else
         {
@@ -59,7 +62,7 @@ public class PlayerController
     {
         if (playerGravity.isGround)
         {
-            playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftSpeed, playerGravity.nomalVector);
+            playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftSpeed+plusTimeUpSpeed*20, playerGravity.nomalVector);
         }
         else
         {
@@ -68,8 +71,8 @@ public class PlayerController
     }
     public void MoveLRFB()
     {
-        playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed);
-        playerMover.MoveControlRbFB(playerInput.inputY, parameter.RightLeftSpeed);
+        playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed + plusTimeUpSpeed * 20);
+        playerMover.MoveControlRbFB(playerInput.inputY, parameter.RightLeftSpeed + plusTimeUpSpeed * 20);
     }
     /// <summary>
     /// 前移動(RB)
@@ -109,7 +112,7 @@ public class PlayerController
     //時間でスピードアップ
     public void SpeedUpTime()
     {
-        playerMover.UpSpeed(parameter.UpSpeed * Time.deltaTime * 60, parameter.MaxSpeed);
+        playerMover.UpSpeed((parameter.UpSpeed +plusTimeUpSpeed) * Time.deltaTime * 60, parameter.MaxSpeed + maxPlusSpeed);
         playerMover.MinusOverSpeed(5 * Time.deltaTime);
         playerMover.SpeedOnObject(parameter.SpeedOnEffectSpeed, SpeedTrigger.OnObject, speedEffectObject);
     }
@@ -186,5 +189,10 @@ public class PlayerController
     public float GetAccelSpeed()
     {
         return playerMover.acceleSpeed;
+    }
+    public void plusUpSpeedAndMax(float up,float max)
+    {
+        plusTimeUpSpeed += up;
+        maxPlusSpeed += max;
     }
 }
