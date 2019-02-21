@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: "\u30DC\u30C3\u30AF\u30B9\u9EC4"
+  m_Name: STEP
   m_Shader: {fileID: 4800000, guid: f7742757fa2e3d34f860c2a3539f739e, type: 3}
   m_ShaderKeywords: V_CW_FOG _EMISSION
   m_LightmapFlags: 2
@@ -44,8 +44,8 @@ Material:
         m_Offset: {x: 0, y: 0.5}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: d0c9ba063d0071f45affd939531204ac, type: 3}
-        m_Scale: {x: 112.56, y: 4}
-        m_Offset: {x: 0, y: 0.5}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0.5, y: 0.5}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
