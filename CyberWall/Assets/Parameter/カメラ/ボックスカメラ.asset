@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab555a47d093441a6385e90936d353, type: 3}
   m_Name: "\u30DC\u30C3\u30AF\u30B9\u30AB\u30E1\u30E9"
   m_EditorClassIdentifier: 
-  distance: 8.67
+  distance: 5.1
   lookAngles: {x: 13.32, y: 0}
   offsetPos: {x: 0, y: -5.5, z: 0}
   plusTargetPos: {x: 0, y: 0, z: 0}
