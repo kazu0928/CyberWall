@@ -174,6 +174,11 @@ public class PlayerMover
         {
             acceleSpeed = 3;
         }
+        if (PlayerManager.Instance.NowStageMode == StageMode.Fall)
+        {
+            PlayerObjectManager.Instance.rb.AddForce(-PlayerObjectManager.Instance.PlayerObject.transform.up * acceleSpeed, ForceMode.Impulse);
+            return;
+        }
         PlayerObjectManager.Instance.rb.AddForce(PlayerObjectManager.Instance.PlayerObject.transform.forward * acceleSpeed, ForceMode.Impulse);
     }
     public void SaveAndSpeedChangeDirect(float speed)

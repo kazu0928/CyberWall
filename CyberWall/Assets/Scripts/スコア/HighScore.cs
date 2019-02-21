@@ -55,9 +55,23 @@ public class HighScore : MonoBehaviour
         {
             PlayerPrefs.DeleteAll();
         }
-        else if(Input.anyKeyDown)
+        else if(Input.anyKeyDown||Tap())
         {
             SceneManager.LoadScene("タイトル");
         }
+    }
+    private bool Tap()
+    {
+        // タッチされているかチェック
+        if (Input.touchCount > 0)
+        {
+            // タッチ情報の取得
+            Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    return true;
+                }
+        }
+        return false;
     }
 }

@@ -38,21 +38,16 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
         MainCameraManager.Instance.InitCameraParameterChange(changeCameraParameter);
         PlayerManager.Instance.ChangeStageMode(changeStage);
         PlayerManager.Instance.ChangeGravityModeNomal(GravityMode.Down);
-        if(startOrEnd==StartEnd.End)
+        if (startOrEnd == StartEnd.End)
         {
             PlayerManager.Instance.SaveSpeedChange(10);
             SoundManager.Instance.ChangeGravity();
             EnergySlider.Instance.ChangePlusEnergyBar(10);
             PlusScore.Instance.PlusScoreDirect(500);
             int a = Random.Range(0, 2);
-            if(a==0)
-            {
-                PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0, 0.09f),0);
-            }
-            else
-            {
-                PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0, 10.0f));
-            }
+            PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0, 0.09f), 0);
+
+            PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0, 10.0f));
         }
         if (startOrEnd==StartEnd.Start)
         {
@@ -70,7 +65,7 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
         {
             PlayerManager.Instance.SaveSpeedReflection();
         }
-        if(startOrEnd == StartEnd.FallEnd)
+        if (startOrEnd == StartEnd.FallEnd)
         {
             PlayerManager.Instance.SaveSpeedChange(0);
             GameManager.Instance.cameraYPoint -= 1005;
@@ -79,14 +74,8 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
             EnergySlider.Instance.ChangePlusEnergyBar(10);
             PlusScore.Instance.PlusScoreDirect(500);
             int a = Random.Range(0, 2);
-            if (a == 0)
-            {
-                PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0, 0.09f), 0);
-            }
-            else
-            {
-                PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0, 10.0f));
-            }
+            PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0.01f, 0.05f), 0);
+            PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0.5f, 6f));
         }
         Destroy(gameObject);
     }

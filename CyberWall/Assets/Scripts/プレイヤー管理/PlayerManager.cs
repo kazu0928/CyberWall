@@ -24,6 +24,10 @@ public class PlayerManager : SingletonMono<PlayerManager>
     //現在のステージが何か
     [SerializeField]
     private StageMode nowStageMode;
+    public StageMode NowStageMode
+    {
+        get { return nowStageMode; }
+    }
 
     //初期化
     void Start()

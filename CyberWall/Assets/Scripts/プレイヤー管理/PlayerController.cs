@@ -193,6 +193,15 @@ public class PlayerController
     public void plusUpSpeedAndMax(float up,float max)
     {
         plusTimeUpSpeed += up;
+        
         maxPlusSpeed += max;
+        if(maxPlusSpeed>120)
+        {
+            maxPlusSpeed = 120;
+        }
+        if(plusTimeUpSpeed>4)
+        {
+            plusTimeUpSpeed = 3;
+        }
     }
 }
