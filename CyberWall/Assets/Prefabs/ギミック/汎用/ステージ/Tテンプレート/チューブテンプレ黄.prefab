@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1073504b9564394eb8e5d9d91de4793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeCameraParameter: {fileID: 11400000, guid: 0a1b946fa21feef4b9c4903cdc0d09c6,
+  changeCameraParameter: {fileID: 11400000, guid: 1bf29c8b1d0726545b68843b8868a4bf,
     type: 2}
   changeStage: 0
   startOrEnd: 1

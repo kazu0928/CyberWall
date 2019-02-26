@@ -8,19 +8,27 @@ public class HighScore : MonoBehaviour
 {
     string[] ranking = { "ランキング1位", "ランキング2位", "ランキング3位", "ランキング4位", "ランキング5位" };
     int[] rankingValue = new int[5];
-    private Text highScoreText; //ハイスコアを表示するText
+    private Text[] highScoreText= { null,null,null,null,null }; //ハイスコアを表示するText
+    private int runkNumber;
 
     void Start ()
     {
-        highScoreText = GetComponent<Text>();
-        highScoreText.text = "";
+        runkNumber = 5;
+        for (int i = 0; i < 5; i++)
+        {
+            highScoreText[i] = transform.Find((i+1).ToString()).GetComponent<Text>();
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            highScoreText[i].text = "";
+        }
         GetRanking();
         SetRanking(EnergySlider.Instance.score);
-        highScoreText.text += "\n";
         for (int i = 0; i < rankingValue.Length; i++)
         {
-            highScoreText.text +=  rankingValue[i].ToString()+"\n";
+            highScoreText[i].text =  rankingValue[i].ToString();
         }
+        StartCoroutine("tenmetu");
     }
     void GetRanking()
     {
@@ -32,6 +40,16 @@ public class HighScore : MonoBehaviour
     }
     void SetRanking(int _value)
     {
+        //書き込み用
+        for (int i = 0; i < ranking.Length; i++)
+        {
+            //取得した値とRankingの値を比較して入れ替え
+            if (_value > rankingValue[i])
+            {
+                runkNumber = i;
+                break;
+            }
+        }
         //書き込み用
         for (int i = 0; i < ranking.Length; i++)
         {
@@ -73,5 +91,19 @@ public class HighScore : MonoBehaviour
                 }
         }
         return false;
+    }
+
+    IEnumerator tenmetu()
+    {
+        if(runkNumber>4)
+        {
+            yield break;
+        }
+        highScoreText[runkNumber].gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        highScoreText[runkNumber].gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine("tenmetu");
+
     }
 }

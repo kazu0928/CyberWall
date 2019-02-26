@@ -14,12 +14,14 @@ public class EnergySlider : SingletonMono<EnergySlider>
     public float minusHp;
     public int score;
     bool overFlag = false;
+    Image panel;
     [SerializeField]
     private GameObject rankingText;
     void Start()
     {
         overFlag = false;
         // スライダーを取得する
+        panel = GameObject.Find("Panel").GetComponent<Image>();
         _slider = GameObject.Find("Slider").GetComponent<Slider>();
         _gameOver = GameObject.Find("GameOver").GetComponent<RawImage>();
         _text = GameObject.Find("Score").GetComponent<Text>();
@@ -31,6 +33,15 @@ public class EnergySlider : SingletonMono<EnergySlider>
     private void Update()
     {
         _slider.value = hp;
+        //色が赤くなる
+        if(hp>0)
+        {
+            panel.color = new Color(panel.color.r, panel.color.b, panel.color.b, (1 - hp / 100) - 0.5f);
+        }
+        else
+        {
+            panel.color = new Color(panel.color.r, panel.color.b, panel.color.b, 0);
+        }
         hp -= minusHp*Time.deltaTime;
         if (hp > 100)
         {
@@ -54,7 +65,7 @@ public class EnergySlider : SingletonMono<EnergySlider>
                 GameObject a =
                 Instantiate(rankingText);
                 a.transform.parent = transform;
-                a.transform.localPosition=new Vector3(1040,0,0);
+                a.transform.localPosition=new Vector3(-529,0,0);
                 overFlag = true;
             }
             return;

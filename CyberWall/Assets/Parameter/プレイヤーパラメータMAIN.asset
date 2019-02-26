@@ -15,10 +15,10 @@ MonoBehaviour:
   startAccelSpeed: 30
   rightLeftSpeed: 100
   rightLeftAirSpeed: 100
-  upSpeed: 3.2
+  upSpeed: 0.2
   jumpPower: 45
   gravityChangeJumpPower: 35
-  maxSpeed: 250
+  maxSpeed: 120
   tiltSpeed: 4
   tiltReturnSpeed: 2
   rayRangeGround: 3.92
