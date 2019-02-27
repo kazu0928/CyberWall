@@ -16,9 +16,9 @@ MonoBehaviour:
   rightLeftSpeed: 100
   rightLeftAirSpeed: 100
   upSpeed: 0.2
-  jumpPower: 45
+  jumpPower: 55
   gravityChangeJumpPower: 35
-  maxSpeed: 120
+  maxSpeed: 150
   tiltSpeed: 4
   tiltReturnSpeed: 2
   rayRangeGround: 3.92
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Bits: 768
   radGround: 0.49
   gravitySpeed: 60
-  startGravitySpeed: 50
+  startGravitySpeed: 90
   speedEffetObj: {fileID: 1373253037774388, guid: ee9df3c09d8e6974c94e9e833613fbad,
     type: 2}
   speedOnEffectSpeed: 10

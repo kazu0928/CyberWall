@@ -8,6 +8,10 @@ public class BreakRedWall : MonoBehaviour,IEventGimic
     private float minusBreakSpeed = 90;
     [SerializeField]
     private int minusHp = 10;
+    private void Start()
+    {
+        minusBreakSpeed += PlayerManager.Instance.GetMaxSpeed() - PlayerManager.Instance.PlayerParam.MaxSpeed;
+    }
     public void OnPlayEffect(Collider other = null)
     {
         if(other==null)

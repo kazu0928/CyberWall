@@ -136,7 +136,7 @@ public class PlayerController
         {
             return;
         }
-        playerGravity.GravityRb(parameter.StartGravitySpeed, parameter.GravitySpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.GravitySpeed), 0, parameter.GravitySpeed));
+        playerGravity.GravityRb(parameter.StartGravitySpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.StartGravitySpeed), 0, parameter.StartGravitySpeed), parameter.GravitySpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.GravitySpeed), 0, parameter.GravitySpeed));
         if (playerGravity.OnGround(parameter.RadGround, parameter.RayRangeGround, parameter.HitLayerGround))
         {
             playerAnimator.PlayRunBoad();
@@ -221,9 +221,9 @@ public class PlayerController
         plusTimeUpSpeed += up;
         
         maxPlusSpeed += max;
-        if(maxPlusSpeed>120)
+        if(maxPlusSpeed>parameter.MaxSpeed)
         {
-            maxPlusSpeed = 120;
+            maxPlusSpeed = parameter.MaxSpeed;
         }
         if(plusTimeUpSpeed>4)
         {

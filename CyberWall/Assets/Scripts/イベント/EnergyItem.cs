@@ -13,7 +13,7 @@ public class EnergyItem : MonoBehaviour,IEventGimic
 
     public void OnPlayEvent()
     {
-        EnergySlider.Instance.ChangePlusEnergyBar(Random.Range(10.0f,20.0f));
+        EnergySlider.Instance.ChangePlusEnergyBar(Random.Range(8.0f,15.0f));
         Destroy(gameObject);
     }
 

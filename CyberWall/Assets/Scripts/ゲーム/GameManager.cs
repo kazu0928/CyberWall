@@ -34,12 +34,17 @@ public class GameManager : SingletonMono<GameManager>
     private bool startFlag;
     private StageMode nextStageMode;
     private StageMode next2StageMode;//使ってない
+    [SerializeField]
+    private int nowLevel;
+    private float timer;
 
     [SerializeField]
     private bool DebugMode = false;
 
     void Start()
     {
+        timer = 0;
+        nowLevel = 0;
         Input.gyro.enabled = true;
         pastNumber = 0;
         startFlag = false;
@@ -84,13 +89,26 @@ public class GameManager : SingletonMono<GameManager>
         }
         pastNumber++;
     }
+    private void Update()
+    {
+        if(nowLevel>=3)
+        {
+            return;
+        }
+        timer += Time.deltaTime;
+        if(timer>40)
+        {
+            nowLevel++;
+            timer = 0;
+        }
+    }
     public void RandomNextCreateMode(StageMode mode)
     {
         nowStageMode = mode;
         //次どのモードか
-        int modeN = Random.Range(0, modeLength);
-        //デバッグ
-        modeN = 2;
+        int modeN = Random.Range(0, 6);
+        ////デバッグ
+        //modeN = 1;
 
         cameraRotaX = Random.Range(-10, 10);
         cameraRotaY = Random.Range(-10, 10);
@@ -98,6 +116,8 @@ public class GameManager : SingletonMono<GameManager>
         switch (modeN)
         {
             case 0:
+            case 1:
+            case 2:
                 nextStageMode = StageMode.Nomal;
                 modeN = Random.Range(0, boxStageLength);
                 yPoint -= 100;
@@ -107,7 +127,8 @@ public class GameManager : SingletonMono<GameManager>
                 pastStage[pastNumber] = Instantiate(StageList.Instance.BoxStage[modeN], new Vector3(0, yPoint - 100, zPoint), Quaternion.identity);
                 CreateEnergyNormal(pastStage[pastNumber]);
                 break;
-            case 1:
+            case 3:
+            case 4:
                 nextStageMode = StageMode.Tube;
                 modeN = Random.Range(0, tubeStageLength);
                 yPoint -= 100;
@@ -117,7 +138,7 @@ public class GameManager : SingletonMono<GameManager>
                 pastStage[pastNumber] = Instantiate(StageList.Instance.TubeStage[modeN], new Vector3(0, yPoint - 100, zPoint), Quaternion.identity);
                 CreateEnergyTube(pastStage[pastNumber]);
                 break;
-            case 2:
+            case 5:
                 nextStageMode = StageMode.Fall;
                 modeN = Random.Range(0, fallStageLength);
                 yPoint -= 100;
@@ -157,7 +178,7 @@ public class GameManager : SingletonMono<GameManager>
     const float boxEdge = 9;
     private void CreateEnergyNormal(GameObject o)
     {
-        float large = Random.Range(10, 25);
+        float large = Random.Range(8, 15);
         for (int i = 0; i < large; i++)
         {
             int itemRand = Random.Range(0, StageList.Instance.EnergyItem.Length);
@@ -186,7 +207,8 @@ public class GameManager : SingletonMono<GameManager>
                     break;
             }
         }
-        int r = Random.Range(0, StageList.Instance.BoxGimicList.Length);
+        //int r = Random.Range(0, StageList.Instance.BoxGimicList.Length);
+        int r = nowLevel;
         //ここからギミック生成
         for (int i = 0; i < 8; i++)
         {
@@ -201,7 +223,7 @@ public class GameManager : SingletonMono<GameManager>
     private void CreateEnergyTube(GameObject o)
     {
         //アイテム生成
-        float large = Random.Range(10, 25);
+        float large = Random.Range(8, 15);
         for (int i = 0; i < large; i++)
         {
             GameObject item;
@@ -217,7 +239,8 @@ public class GameManager : SingletonMono<GameManager>
         for (int i = 0; i < 7; i++)
         {
             GameObject gim;
-            int r = Random.Range(0, StageList.Instance.TubeGimicList.Length);
+            //int r = Random.Range(0, StageList.Instance.TubeGimicList.Length);
+            int r = nowLevel;
             int r2 = Random.Range(0, StageList.Instance.TubeGimicList[r].GimicSet.Length);
             gim = Instantiate(StageList.Instance.TubeGimicList[r].GimicSet[r2]);
             gim.transform.parent = o.transform;
@@ -226,7 +249,7 @@ public class GameManager : SingletonMono<GameManager>
     }
     private void CreateEnergyFall(GameObject o)
     {
-        float large = Random.Range(19, 30);
+        float large = Random.Range(7, 13);
         for (int i = 0; i < large; i++)
         {
             GameObject item;
@@ -257,14 +280,15 @@ public class GameManager : SingletonMono<GameManager>
             item.transform.localPosition = new Vector3(posLocal, pos, posLocal);
         }
         //ここからギミック生成
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             GameObject gim;
-            int r = Random.Range(0, StageList.Instance.FallGimicList.Length);
+            //int r = Random.Range(0, StageList.Instance.FallGimicList.Length);
+            int r = nowLevel;
             int r2 = Random.Range(0, StageList.Instance.FallGimicList[r].GimicSet.Length);
             gim = Instantiate(StageList.Instance.FallGimicList[r].GimicSet[r2]);
             gim.transform.parent = o.transform;
-            gim.transform.localPosition = new Vector3(0, -960 + (i * 150),0 );
+            gim.transform.localPosition = new Vector3(0, -960 + (i * 120),0 );
         }
     }
 }
