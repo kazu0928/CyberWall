@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab555a47d093441a6385e90936d353, type: 3}
   m_Name: "\u30C6\u30B9\u30C8\u30AB\u30E1\u30E9"
   m_EditorClassIdentifier: 
-  distance: 6.65
-  lookAngles: {x: 0, y: 0}
+  distance: 7.7
+  lookAngles: {x: 5.9, y: 0}
   offsetPos: {x: 0, y: -0.95, z: 0}
   plusTargetPos: {x: 0, y: 0, z: 0}
   trackingSpeed: 8

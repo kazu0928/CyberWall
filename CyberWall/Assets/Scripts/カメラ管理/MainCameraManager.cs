@@ -180,15 +180,15 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         }
 
         //カメラとの距離
-        childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
+        childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance + GameManager.Instance.plusDistanceCam);
         //カメラ角度
         managerPos.localEulerAngles = lookAngles;
-        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles, 5f*Time.deltaTime);
+        lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles + new Vector2(GameManager.Instance.cameraRotaX, GameManager.Instance.cameraRotaY), 5f * Time.deltaTime);
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
         if (mainCameraParameter.RotationFlag)
         {
-            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles + new Vector3(GameManager.Instance.cameraRotXNoLeap, GameManager.Instance.cameraRotYNoLeap, 0);
         }
         //壁めり込み判定
         RaycastHit hit;
@@ -238,15 +238,16 @@ public class MainCameraManager : SingletonMono<MainCameraManager>
         }
 
         //カメラとの距離
-        childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance);
+        childPos.localPosition = new Vector3(0, 0, -mainCameraParameter.Distance + GameManager.Instance.plusDistanceCam);
         //カメラ角度
         managerPos.localEulerAngles = lookAngles;
         lookAngles = Vector2.Lerp(lookAngles, mainCameraParameter.LookAngles + new Vector2(GameManager.Instance.cameraRotaX, GameManager.Instance.cameraRotaY), 5f*Time.deltaTime);
+
         //カメラの位置
         cameraPos.localPosition = mainCameraParameter.OffsetPos;
         if (mainCameraParameter.RotationFlag)
         {
-            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles;
+            rotationPos.localEulerAngles = lookPosition.rotation.eulerAngles+new Vector3(GameManager.Instance.cameraRotXNoLeap, GameManager.Instance.cameraRotYNoLeap,0);
         }
         //壁めり込み判定
         RaycastHit hit;

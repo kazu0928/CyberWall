@@ -28,10 +28,11 @@ public class PlayerManager : SingletonMono<PlayerManager>
     {
         get { return nowStageMode; }
     }
-
+    public bool fallPrev = false;
     //初期化
     void Start()
     {
+        fallPrev = false;
         playerObj = Instantiate(parameter.PlayerObj, transform.position, transform.rotation).gameObject;
         fx = Camera.main.gameObject.GetComponent<GlitchFx>();
         //プレイヤーにイベント用のスクリプトをアタッチ
@@ -57,7 +58,14 @@ public class PlayerManager : SingletonMono<PlayerManager>
         }
         else if(nowStageMode == StageMode.Nomal)
         {
-            controller.Move();
+            if (fallPrev==false)
+            {
+                controller.Move();
+            }
+            else
+            {
+                controller.MoveFallPrev();
+            }
         }
         else if(nowStageMode == StageMode.Fall)
         {
@@ -116,5 +124,9 @@ public class PlayerManager : SingletonMono<PlayerManager>
     {
         controller.plusUpSpeedAndMax(up, max);
     }
-
+    //加速
+    public void PlusOverSpeed(float speed)
+    {
+        controller.PlusOverSpeed(speed);
+    }
 }

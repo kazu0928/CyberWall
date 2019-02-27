@@ -5,7 +5,6 @@ using UnityEngine;
 public class RandomRotation : MonoBehaviour {
     [SerializeField]
     private bool nineFlag=false;
-	// Use this for initialization
 	void Start () {
         if(nineFlag==true)
         {

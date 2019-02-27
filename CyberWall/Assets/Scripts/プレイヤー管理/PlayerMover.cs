@@ -192,4 +192,8 @@ public class PlayerMover
     {
         acceleSpeed = saveAcceleSpeed;
     }
+    public void PlusOverSpeed(float speed)
+    {
+        plusSpeed += speed;
+    }
 }

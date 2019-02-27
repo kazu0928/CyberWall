@@ -53,17 +53,20 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
         {
             PlayerManager.Instance.SaveSpeedReflection();
             GameManager.Instance.RandomNextCreateMode(changeStage);
+            PlayerManager.Instance.fallPrev = false;
         }
-        if(startOrEnd == StartEnd.FallStart)
+        if (startOrEnd == StartEnd.FallStart)
         {
             PlayerManager.Instance.SaveSpeedReflection();
             GameManager.Instance.PlusYPoint(-1005);
             GameManager.Instance.PlusZPoint(-500);
             GameManager.Instance.RandomNextCreateMode(StageMode.Fall);
+            PlayerManager.Instance.fallPrev = true;
         }
         if(startOrEnd == StartEnd.Fall)
         {
             PlayerManager.Instance.SaveSpeedReflection();
+            PlayerManager.Instance.fallPrev = false;
         }
         if (startOrEnd == StartEnd.FallEnd)
         {
@@ -76,6 +79,7 @@ public class ChangeMoveAndCamera : MonoBehaviour,IEventGimic
             int a = Random.Range(0, 2);
             PlayerManager.Instance.PlusUpSpeedAndMax(Random.Range(0.01f, 0.05f), 0);
             PlayerManager.Instance.PlusUpSpeedAndMax(0, Random.Range(0.5f, 6f));
+            PlayerManager.Instance.fallPrev = false ;
         }
         Destroy(gameObject);
     }

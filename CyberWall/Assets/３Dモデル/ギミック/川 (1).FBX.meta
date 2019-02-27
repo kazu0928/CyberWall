@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: b6cebc296e47c9645ac46d65210136b2
+guid: 909bb4faf11b7574487ca28f658c54ed
+timeCreated: 1551199296
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -21,6 +23,7 @@ ModelImporter:
     4300000: Box001
     4300002: Box002
     4300004: Box003
+    7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
   materials:

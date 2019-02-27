@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class UVScroll : MonoBehaviour
 {
+    enum XY
+    {
+        X,
+        Y,
+    }
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private XY xY = XY.Y;
     private Material material;
     private Vector2 uv;
 
@@ -24,7 +31,14 @@ public class UVScroll : MonoBehaviour
 
     private void Update()
     {
-        uv.y += Time.deltaTime * speed;
+        if (XY.Y == xY)
+        {
+            uv.y += Time.deltaTime * speed;
+        }
+        if(XY.X == xY)
+        {
+            uv.x += Time.deltaTime * speed;
+        }
         material.SetTextureOffset("_MainTex", uv);
     }
 }

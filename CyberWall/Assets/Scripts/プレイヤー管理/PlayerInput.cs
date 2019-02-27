@@ -58,7 +58,6 @@ public class PlayerInput
     //キーが押されれば、その次の左右上下を返す
     public GravityMode InputGravityChange(GravityMode mode)
     {
-
         if (Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("GravityChangeL") || RightTap())
         {
             switch (mode)

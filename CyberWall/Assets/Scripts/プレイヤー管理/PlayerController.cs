@@ -14,6 +14,7 @@ public class PlayerController
 
     private float plusTimeUpSpeed = 0;
     private float maxPlusSpeed = 0;
+    private float minusMaxSpeed = 0;
 
     public PlayerController(PlayerParameter playerParameter, GameObject speedEffectObj = null)
     {
@@ -33,11 +34,19 @@ public class PlayerController
     /// </summary>
     public void MoveLRInput()
     {
+        if (maxPlusSpeed < -50)
+        {
+            return;
+        }
         playerMover.PlayerTilt(parameter.TiltSpeed, parameter.TiltReturnSpeed, playerInput.InputHorizontal());
     }
     //両方入力対応
     public void MoveInput()
     {
+        if(maxPlusSpeed<-50)
+        {
+            return;
+        }
         playerInput.InputVertical();
         playerInput.InputHorizontal();
         playerMover.PlayerTilt(parameter.TiltSpeed, parameter.TiltReturnSpeed, playerInput.inputX,playerInput.inputY);
@@ -101,6 +110,10 @@ public class PlayerController
         playerGravity.isGround = false;
         playerAnimator.PlayJump();
     }
+    public void GravityRotationNoInput()
+    {
+        playerGravity.GravityChange(playerGravity.mode);
+    }
     public void GravityRotationTube()
     {
         playerGravity.GravityChangeTube();
@@ -119,6 +132,10 @@ public class PlayerController
     //重力
     public void GravityRb()
     {
+        if (maxPlusSpeed < -50)
+        {
+            return;
+        }
         playerGravity.GravityRb(parameter.StartGravitySpeed, parameter.GravitySpeed);
         if (playerGravity.OnGround(parameter.RadGround, parameter.RayRangeGround, parameter.HitLayerGround))
         {
@@ -129,7 +146,6 @@ public class PlayerController
     //ジャンプ処理
     public void JumpRb()
     {
-
         //TODO:
         if (playerGravity.isGround)
         {
@@ -169,6 +185,16 @@ public class PlayerController
         MoveDown();
         MoveLRFB();
     }
+    public void MoveFallPrev()
+    {
+        MoveLRInput();
+        GravityRotationTube();
+        SpeedUpTime();
+        MoveStraight();
+        MoveLRRb();
+        GravityRb();
+        JumpRb();
+    }
 
     public void PlusSpeedChange(float speed)
     {
@@ -203,5 +229,10 @@ public class PlayerController
         {
             plusTimeUpSpeed = 3;
         }
+    }
+    //最初の加速
+    public void PlusOverSpeed(float speed)
+    {
+        playerMover.PlusOverSpeed(speed);
     }
 }

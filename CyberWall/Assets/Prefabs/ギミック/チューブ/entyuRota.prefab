@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 23315511312982806}
   - component: {fileID: 95953540938968280}
   - component: {fileID: 114039715607220736}
+  - component: {fileID: 114305531010638720}
   m_Layer: 0
   m_Name: entyuRota
   m_TagString: Untagged
@@ -803,6 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  d: 0
 --- !u!114 &114059192242948826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1521,6 +1523,18 @@ MonoBehaviour:
   minusBreakSpeed: 150
   effectType: 0
   minusHp: 10
+--- !u!114 &114305531010638720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141103487313868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfab555659c42f449e94ac1fc0b7053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114327703814594356
 MonoBehaviour:
   m_ObjectHideFlags: 1

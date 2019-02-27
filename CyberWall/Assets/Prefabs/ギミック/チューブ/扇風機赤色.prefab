@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23446311925712770}
   - component: {fileID: 114220697833773672}
   - component: {fileID: 64599235239020714}
+  - component: {fileID: 114236192131198718}
   m_Layer: 9
   m_Name: Box002
   m_TagString: Gimic
@@ -76,6 +77,7 @@ GameObject:
   - component: {fileID: 23276854591808444}
   - component: {fileID: 114924773116803238}
   - component: {fileID: 64617998195217630}
+  - component: {fileID: 114519439537105854}
   m_Layer: 9
   m_Name: Box004
   m_TagString: Gimic
@@ -95,6 +97,7 @@ GameObject:
   - component: {fileID: 23551995438523204}
   - component: {fileID: 114250401555103256}
   - component: {fileID: 64977854229576854}
+  - component: {fileID: 114768847306351590}
   m_Layer: 9
   m_Name: Box003
   m_TagString: Gimic
@@ -112,6 +115,7 @@ GameObject:
   - component: {fileID: 4144880380652202}
   - component: {fileID: 33748324959353024}
   - component: {fileID: 23282793333763390}
+  - component: {fileID: 114815024195393916}
   m_Layer: 9
   m_Name: Cylinder001
   m_TagString: Untagged
@@ -454,6 +458,18 @@ MonoBehaviour:
   minusBreakSpeed: 150
   effectType: 0
   minusHp: 10
+--- !u!114 &114236192131198718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012706100212364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfab555659c42f449e94ac1fc0b7053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114250401555103256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,6 +484,18 @@ MonoBehaviour:
   minusBreakSpeed: 150
   effectType: 0
   minusHp: 10
+--- !u!114 &114519439537105854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555905356864386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfab555659c42f449e94ac1fc0b7053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114534694313350736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,6 +508,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  d: 0
+--- !u!114 &114768847306351590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791639196317464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfab555659c42f449e94ac1fc0b7053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114813434449820966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,6 +532,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c492dc98e1e6146b80ca97c21208c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114815024195393916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861534159661086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfab555659c42f449e94ac1fc0b7053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114924773116803238
 MonoBehaviour:
   m_ObjectHideFlags: 1

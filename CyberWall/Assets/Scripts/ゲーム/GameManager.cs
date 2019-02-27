@@ -10,6 +10,8 @@ public class GameManager : SingletonMono<GameManager>
     public float yPoint; public float zPoint;
     public float cameraYPoint; public float cameraZPoint;
     public float cameraRotaX;public float cameraRotaY;
+    public float cameraRotXNoLeap;public float cameraRotYNoLeap;
+    public float plusDistanceCam;
 
     private int modeLength;
     private int boxStageLength;
@@ -19,7 +21,15 @@ public class GameManager : SingletonMono<GameManager>
 
     private StageMode nowStageMode;
     private GameObject[] pastStage = { null, null, null, null };//消す
+    public GameObject[] PastStage
+    {
+        get { return pastStage; }
+    }
     private int pastNumber;
+    public int PastNumber
+    {
+        get { return pastNumber; }
+    }
     private GameObject startStage;
     private bool startFlag;
     private StageMode nextStageMode;
