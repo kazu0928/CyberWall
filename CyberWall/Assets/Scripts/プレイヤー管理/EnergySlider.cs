@@ -50,19 +50,19 @@ public class EnergySlider : SingletonMono<EnergySlider>
     {
         _slider.value = hp;
         //色が赤くなる
-        if(hp>0&&hp<50)
+        if(hp>0&&hp<40)
         {
             panel.color = new Color(panel.color.r, panel.color.b, panel.color.b, Mathf.Lerp(panel.color.a, (1 - hp / 60), 0.01f*Time.deltaTime*140));
         }
-        else if(hp>=50)
+        else if(hp>=40)
         {
             panel.color = new Color(panel.color.r, panel.color.b, panel.color.b, 0);
         }
-        if (hp > 0 && hp < 30)
+        if (hp > 0 && hp < 20)
         {
             panel2.color = new Color(panel2.color.r, panel2.color.b, panel2.color.b, Mathf.Lerp(panel2.color.a, (1 - hp /60), 0.01f * Time.deltaTime * 140));
         }
-        else if (hp >= 30)
+        else if (hp >= 20)
         {
             panel2.color = new Color(panel.color.r, panel.color.b, panel.color.b, 0);
         }

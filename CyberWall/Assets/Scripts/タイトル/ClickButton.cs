@@ -14,6 +14,8 @@ public class ClickButton : MonoBehaviour {
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         fadeFlag = false;
         alfa = 0;
         red = fadeOut.color.r;
