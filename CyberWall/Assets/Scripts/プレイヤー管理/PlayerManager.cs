@@ -129,4 +129,8 @@ public class PlayerManager : SingletonMono<PlayerManager>
     {
         controller.PlusOverSpeed(speed);
     }
+    public float GetMaxSpeed()
+    {
+       return controller.GetMaxSpeed();
+    }
 }

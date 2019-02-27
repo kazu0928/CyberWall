@@ -221,7 +221,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: eb1c32c2cc9f94c449371e107171f44d, type: 2}
-  - {fileID: 2100000, guid: 5d988f53ef70e844791c98223ec3fb5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,7 +289,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: eb1c32c2cc9f94c449371e107171f44d, type: 2}
-  - {fileID: 2100000, guid: 5d988f53ef70e844791c98223ec3fb5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -325,7 +323,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: eb1c32c2cc9f94c449371e107171f44d, type: 2}
-  - {fileID: 2100000, guid: 5d988f53ef70e844791c98223ec3fb5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -470,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  xY: 1
 --- !u!114 &114250401555103256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -496,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  xY: 1
 --- !u!114 &114534694313350736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  xY: 1
 --- !u!114 &114813434449820966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c492dc98e1e6146b80ca97c21208c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intens: 2.7
 --- !u!114 &114815024195393916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,6 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  xY: 1
 --- !u!114 &114924773116803238
 MonoBehaviour:
   m_ObjectHideFlags: 1

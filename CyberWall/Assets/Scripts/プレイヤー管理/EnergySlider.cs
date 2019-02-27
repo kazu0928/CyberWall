@@ -70,7 +70,7 @@ public class EnergySlider : SingletonMono<EnergySlider>
         //{
         //    panel.color = new Color(panel.color.r, panel.color.b, panel.color.b, 0);
         //}
-        hp -= minusHp*Time.deltaTime;
+        hp -= minusHp*Time.deltaTime*(PlayerManager.Instance.GetMaxSpeed()/PlayerManager.Instance.PlayerParam.MaxSpeed);
         if (hp > 100)
         {
             hp = 100;

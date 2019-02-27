@@ -59,7 +59,7 @@ public class PlayerController
     {
         if (playerGravity.isGround)
         {
-            playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed + plusTimeUpSpeed * 20);
+            playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.RightLeftSpeed), 0, parameter.RightLeftSpeed));
         }
         else
         {
@@ -71,7 +71,7 @@ public class PlayerController
     {
         if (playerGravity.isGround)
         {
-            playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftSpeed+plusTimeUpSpeed*20, playerGravity.nomalVector);
+            playerMover.MoveControlRbTube(playerInput.inputX, parameter.RightLeftSpeed+Mathf.Clamp( (((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.RightLeftSpeed),0,parameter.RightLeftSpeed), playerGravity.nomalVector);
         }
         else
         {
@@ -80,8 +80,8 @@ public class PlayerController
     }
     public void MoveLRFB()
     {
-        playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed + plusTimeUpSpeed * 20);
-        playerMover.MoveControlRbFB(playerInput.inputY, parameter.RightLeftSpeed + plusTimeUpSpeed * 20);
+        playerMover.MoveControlRb(playerInput.inputX, parameter.RightLeftSpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.RightLeftSpeed), 0, parameter.RightLeftSpeed));
+        playerMover.MoveControlRbFB(playerInput.inputY, parameter.RightLeftSpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.RightLeftSpeed), 0, parameter.RightLeftSpeed));
     }
     /// <summary>
     /// 前移動(RB)
@@ -136,7 +136,7 @@ public class PlayerController
         {
             return;
         }
-        playerGravity.GravityRb(parameter.StartGravitySpeed, parameter.GravitySpeed);
+        playerGravity.GravityRb(parameter.StartGravitySpeed, parameter.GravitySpeed + Mathf.Clamp((((GetAccelSpeed() - parameter.MaxSpeed) / parameter.MaxSpeed) * parameter.GravitySpeed), 0, parameter.GravitySpeed));
         if (playerGravity.OnGround(parameter.RadGround, parameter.RayRangeGround, parameter.HitLayerGround))
         {
             playerAnimator.PlayRunBoad();
@@ -229,6 +229,10 @@ public class PlayerController
         {
             plusTimeUpSpeed = 3;
         }
+    }
+    public float GetMaxSpeed()
+    {
+        return parameter.MaxSpeed + maxPlusSpeed;
     }
     //最初の加速
     public void PlusOverSpeed(float speed)
