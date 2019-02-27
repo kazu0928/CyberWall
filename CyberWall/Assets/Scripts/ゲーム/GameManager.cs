@@ -90,7 +90,7 @@ public class GameManager : SingletonMono<GameManager>
         //次どのモードか
         int modeN = Random.Range(0, modeLength);
         //デバッグ
-        modeN = 0;
+        modeN = 2;
 
         cameraRotaX = Random.Range(-10, 10);
         cameraRotaY = Random.Range(-10, 10);
@@ -188,13 +188,13 @@ public class GameManager : SingletonMono<GameManager>
         }
         int r = Random.Range(0, StageList.Instance.BoxGimicList.Length);
         //ここからギミック生成
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             GameObject gim;
             int r2 = Random.Range(0, StageList.Instance.BoxGimicList[r].GimicSet.Length);
             gim = Instantiate(StageList.Instance.BoxGimicList[r].GimicSet[r2]);
             gim.transform.parent = o.transform;
-            gim.transform.localPosition = new Vector3(0, 0, 460 - (i * 140));
+            gim.transform.localPosition = new Vector3(0, 0, 460 - (i * 120));
         }
     }
     const float tubeEdge = 5;

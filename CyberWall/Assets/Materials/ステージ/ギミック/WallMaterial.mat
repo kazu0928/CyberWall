@@ -110,7 +110,7 @@ Material:
     - _V_CW_Rim_Bias: 0.292
     - _V_CW_Rim_Power: 3
     - _V_CW_SecondaryNormalMap_UV_Scale: 1
-    - _V_CW_SecondaryTex_Blend: -0.413
+    - _V_CW_SecondaryTex_Blend: 0
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0.566}

@@ -9,10 +9,10 @@ public class RandomRotation : MonoBehaviour {
         if(nineFlag==true)
         {
             int r = Random.Range(0, 4);
-            transform.rotation = Quaternion.Euler(0, 0, r*90);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, r*90);
             return;
         }
         int ra = Random.Range(0, 360);
-        transform.rotation = Quaternion.Euler(0, 0, ra);
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, ra);
 	}
 }
